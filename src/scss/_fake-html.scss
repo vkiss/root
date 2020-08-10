@@ -1,0 +1,56 @@
+.html {
+  &-code {
+    position: relative;
+    color: white;
+
+    @at-root %hover-before-after {
+      display: none;
+
+      @include not-mobile {
+        display: block;
+        position: absolute;
+        white-space: nowrap;
+        font-size: 14px;
+        bottom: 1px;
+        pointer-events: none;
+        text-transform: none;
+        font-weight: 400;
+        color: white !important;
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+              -moz-user-select: none; /* Old versions of Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+      }
+    }
+
+    .hover-before {
+      @extend %hover-before-after;
+
+      right: calc(100% + 5px);
+    }
+  
+    .hover-after {
+      @extend %hover-before-after;
+
+      left: calc(100% + 5px);
+    }
+  }
+
+  &-element {
+    color: #ef596f;
+  }
+
+  &-attribute {
+    color: #d19a66;
+  }
+  
+  &-key {
+    color: #89ca78;
+  }
+
+  &-comment {
+    color: #7f848e;
+  }
+}

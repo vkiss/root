@@ -1,0 +1,82 @@
+h1 {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+section p,
+section h1 {
+  margin: 0 0 10px 0;
+}
+
+a {
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+section {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  @include not-mobile {
+    justify-content: center;
+  }
+}
+
+aside {
+  @include not-mobile {
+    overflow: hidden;
+    color: #7f848e;
+    line-height: 18px;
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    padding: 18px 0 18px 3ch;
+    max-width: 185px;
+    font-size: 10px;
+  }
+
+  @include mq(950, min) {
+    max-width: 208px;
+    font-size: 12px;
+  }
+
+  @each $resolution, $maxWidth in (
+    1000: 228px,
+    1100: 270px,
+    1200: 320px,
+    1300: 370px,
+    1350: 400px,
+    1400: 430px,
+  ) {
+    @include mq($resolution, min) { max-width: $maxWidth; }
+  }
+
+  @at-root %aside-before-after {
+    white-space: pre;
+    position: absolute;
+    left: 0;
+    line-height: 18px;
+  }
+
+  &:before {
+    @extend %aside-before-after;
+
+    content: "/**\A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  ";
+    top: 0;
+  }
+
+  &:after {
+    @extend %aside-before-after;
+
+    content: " */";
+    bottom: 0;
+    background-color: #282c34;
+  }
+
+  p {
+    margin: 0;
+  }
+}

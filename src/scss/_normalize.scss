@@ -1,0 +1,93 @@
+/*
+  reset file
+    based on [normalize.css v5.0](github.com/necolas/normalize.css)
+ */
+
+ * {
+  box-sizing: border-box;
+  text-rendering: geometricPrecision;
+}
+
+/**
+ * 1. correct the line height in all browsers.
+ * 2. prevent adjustments of font size after orientation changes in
+ *    ie on windows phone and in ios.
+ */
+
+html {
+  margin: 0;
+  background-color: #282c34;
+  color: white;
+  line-height: 1.15; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+/**
+ * Body config
+ */
+
+body {
+  font-family: "Hack", monospace;
+  margin: 0;
+  flex-direction: column;
+  display: flex;
+  height: 100vh;
+}
+
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+
+a {
+  background-color: transparent; /* 1 */
+  -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}

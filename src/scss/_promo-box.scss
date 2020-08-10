@@ -1,0 +1,66 @@
+.promo-box {
+  border: 1px solid rgba(95,95,95,.78);
+  font-size: 12px;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    text-decoration: none;
+    box-shadow: 0.4rem 0.4rem 0 #525355;
+    transform: translate(-0.4rem, -0.4rem);
+  }
+
+  @include mobile {
+    order: 1;
+    max-width: 90%;
+    margin: 5%;
+  }
+
+  @include not-mobile {
+    max-width: 500px;
+    margin: 0 auto 3ch;
+  }
+
+  &-header {
+    text-align: center;
+    padding: .5rem 0;
+    background-color: transparent;
+    color: #ccc;
+    border-bottom: 1px solid rgba(95,95,95,.78);
+  }
+
+  &-body {
+    display: flex;
+  }
+
+  &-ad {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin: 0;
+    }
+
+    strong {
+      @include not-mobile {
+        white-space: nowrap
+      }
+    }
+  }
+
+  &-media {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: calc(32px + 1rem);
+    padding-right: 0;
+
+    img {
+      max-width: 32px;
+    }
+  }
+}

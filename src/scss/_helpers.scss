@@ -1,0 +1,11 @@
+.hide-desk {
+  @include not-mobile {
+    display: none;
+  }
+}
+
+.hide-mobile {
+  @include mobile {
+    display: none;
+  }
+}

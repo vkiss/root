@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="http://vkiss.com.br/">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/hack-font/3.003/web/hack.min.css">
+    <link rel="shortcut icon" href="./assets/favicon.png">
+  </head>
+  <body>
+    <section>
+      <p class="html-comment">/* Vinicius Kiss */</p>
+      <h1 class="html-code">
+        <span class="hover-before">&lt;<span class="html-element">h1</span>&gt;</span>
+        Desenvolvedor Frontend
+        <span class="hover-after">&lt;/<span class="html-element">h1</span>&gt;</span>
+      </h1>
+      <p class="hide-mobile">
+        <a class="html-code" href="mailto:<%= email %>">
+          <span class="hover-before">&lt;<span class="html-element">a</span> <span class="html-attribute">href</span>=<span class="html-key">"mailto:<%= email %>"</span>&gt;</span>
+          <%= email %>
+          <span class="hover-after">&lt;/<span class="html-element">a</span>&gt;</span>
+        </a>
+      </p>
+      <p class="hide-mobile">
+        <a class="html-code" href="<%= telefoneLink %>">
+          <span class="hover-before">&lt;<span class="html-element">a</span> <span class="html-attribute">href</span>=<span class="html-key">"<%= telefoneLink %>"</span>&gt;</span>
+          <%= telefone %>
+          <span class="hover-after">&lt;/<span class="html-element">a</span>&gt;</span>
+        </a>
+      </p>
+      <p class="html-code hide-mobile">
+        <span class="hover-before">&lt;<span class="html-element">p</span>&gt;</span>
+          <%= htmlWebpackPlugin.options.meta.description %>
+        <span class="hover-after">&lt;/<span class="html-element">p</span>&gt;</span>
+      </p>
+    </section>
+
+    <a id="promo-box" class="promo-box"></a>
+
+    <footer>
+      <ul>
+        <% footerLinks.forEach(function(item) { %>
+          <li>
+            <a href="<%= item.href %>" target="<%= item.target %>">
+              <%= item.label %>
+            </a>
+          </li>
+        <% }); %>
+        <li class="hide-desk">
+          <a class="mobile-cta" href="<%= telefoneLink %>"><%= telefone %></a>
+        </li>
+        <li class="hide-desk">
+          <a class="mobile-cta" href="mailto:<%= email %>"><%= email %></a>
+        </li>
+      </ul>
+    </footer>
+
+    <aside class="hide-mobile">
+      <% footerNotes.forEach(function(item) { %>
+        <p>.<%= item %></p>
+      <% }); %>
+    </aside>
+  </body>
+</html>

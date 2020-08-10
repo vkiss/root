@@ -1,0 +1,47 @@
+a {
+  color: white;
+
+  @include not-mobile {
+    color: #2bbac5;
+  }
+
+  &:not(.promo-box--s--) {
+    &:hover {
+      @include not-mobile {
+        background-color: #2bbac5;
+        border-bottom-color: #2bbac5;
+        color: white;
+      }
+    }
+  }
+
+  &.html-code {
+    &:hover {
+      @include not-mobile {
+        background-color: white;
+        border-bottom-color: white;
+        color: #282c34;
+      }
+    }
+  }
+
+  &.mobile-cta {
+    @include mobile {
+      color: #ef596f;
+    }
+  }
+
+  aside & {
+    color: #7f848e;
+
+    &:not(.promo-box--s--) {
+      &:hover {
+        @include not-mobile {
+          background-color: #7f848e;
+          border-bottom-color: #7f848e;
+          color: #282c34;
+        }
+      }
+    }
+  }
+}

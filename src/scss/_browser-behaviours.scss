@@ -1,0 +1,10 @@
+/*
+ * 1. Change browser text selection color bg
+*/
+
+::selection {
+  background: rgba(255, 255, 255, 0.18); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: rgba(255, 255, 255, 0.18); /* Gecko Browsers */
+}
