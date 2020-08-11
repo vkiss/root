@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
@@ -40,6 +41,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      inlineSource: 'main.bundle.js',
       title: "Vinicius Kiss - Desenvolvedor Frontend",
       templateParameters: {
         email: "contato@vkiss.com.br",
@@ -85,7 +87,8 @@ module.exports = {
         collapseWhitespace: true
       },
     }),
-    new CleanWebpackPlugin()
+    new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
+    new CleanWebpackPlugin(),
   ],
   devServer: {
     contentBase: './dist',
