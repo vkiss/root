@@ -1,10 +1,10 @@
 import './style.scss';
 
-import footerNotes from './footerNotes';
+import footerNotes  from './footerNotes';
 import logoOneDrive from './assets/onedrive.svg';
-import logoPicPay from './assets/picpay.svg';
-import logoUmbler from './assets/umbler.svg';
-import logoXP from './assets/xp.svg';
+import logoPicPay   from './assets/picpay.svg';
+import logoUmbler   from './assets/umbler.svg';
+import logoXP       from './assets/xp.svg';
 
 function init() {
   const promoLoop = createPromoLoop();
@@ -91,7 +91,7 @@ function createPromoBox(promo) {
 function createFooterNotes(data) {
   data.map((item) => {
     let thisPElement = document.createElement("P");
-    thisPElement.innerHTML = item;
+    thisPElement.innerHTML = `.${item}`;
 
     document.getElementById("footer-notes").appendChild(thisPElement);
   })

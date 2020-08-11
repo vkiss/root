@@ -1,2 +1,6 @@
+# files with sensitive information
+deployConfig.js
+
+# generated files
 /node_modules
 /dist

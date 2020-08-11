@@ -5,7 +5,7 @@ a {
     color: #2bbac5;
   }
 
-  &:not(.promo-box--s--) {
+  &:not(.promo-box) {
     &:hover {
       @include not-mobile {
         background-color: #2bbac5;
@@ -34,7 +34,7 @@ a {
   aside & {
     color: #7f848e;
 
-    &:not(.promo-box--s--) {
+    &:not(.promo-box) {
       &:hover {
         @include not-mobile {
           background-color: #7f848e;

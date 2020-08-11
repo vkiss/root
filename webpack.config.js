@@ -1,8 +1,9 @@
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path                          = require('path');
+const webpack                       = require("webpack");
+const HtmlWebpackPlugin             = require("html-webpack-plugin");
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const path = require('path');
+const CopyPlugin                    = require('copy-webpack-plugin');
+const { CleanWebpackPlugin }        = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/app.js',
@@ -37,7 +38,7 @@ module.exports = {
             loader: 'file-loader'
           },
         ],
-      }
+      },
     ]
   },
   plugins: [
@@ -85,6 +86,11 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(require("./package.json").version)
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: './rootFiles', to: './' },
+      ],
     }),
   ],
   devServer: {
