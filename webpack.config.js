@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -69,13 +70,6 @@ module.exports = {
             target: "_blank",
           }
         ],
-        footerNotes: [
-          "font: <a target=\"_blank\" href=\"https://sourcefoundry.org/hack/\">hack</a>",
-          "html syntax style based on <a target=\"_blank\" href=\"https://github.com/Binaryify/OneDark-Pro\">one dark pro</a>'s color palette",
-          "hosted by <a target=\"_blank\" href=\"https://www.umbler.com/br/seja-bem-vindo?a=7kly6v4e\">umbler</a>",
-          "2011+, released under the <a target=\"_blank\" href=\"https://mit-license.org/\">mit license</a>.",
-          "<a target=\"_blank\" href=\"https://github.com/vkiss/root\">source code</a>",
-        ]
       },
       meta: {
         viewport: 'width=device-width,minimum-scale=1',
@@ -89,6 +83,9 @@ module.exports = {
     }),
     new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(require("./package.json").version)
+    }),
   ],
   devServer: {
     contentBase: './dist',
