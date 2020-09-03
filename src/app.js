@@ -38,7 +38,7 @@ function createPromoLoop() {
     {
       hat: "AD",
       title: "XP Investimentos",
-      href: "https://cadastro.xpi.com.br/desktop/step/1?utm_source=linkedin&utm_medium=colaboradores&utm_campaign=aquisicao_xp_gxp_202005_lwer_abrirconta_trafego_abrir-conta_nac&utm_content=aberta_no_nac_texto_na_na&utm_term=U00967_na_colaborador_home_na",
+      href: "https://cadastro.xpi.com.br/desktop/step/1?utm_source=social-media&utm_medium=colaboradores&utm_campaign=aquisicao_xp_gxp_202000_lwer_abrirconta_trafego_abrir-conta_nac&utm_content=aberta_no_nac_texto_na_na&utm_term=u000967_na_colaborador_home_na",
       target: "_blank",
       img: logoXP,
       text: "As melhores opções de investimentos do mercado. Abertura de conta sem custo. Na XP nenhum cliente é igual ao outro.",
