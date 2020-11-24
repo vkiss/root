@@ -3,7 +3,7 @@
     based on [normalize.css v5.0](github.com/necolas/normalize.css)
  */
 
- * {
+* {
   box-sizing: border-box;
   text-rendering: geometricPrecision;
 }
@@ -16,11 +16,10 @@
 
 html {
   margin: 0;
-  background-color: #282c34;
-  color: white;
+  background-color: #282C34;
+  color: #FFF;
   line-height: 1.15; /* 1 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  text-size-adjust: 100%; /* 2 */
 }
 
 /**
@@ -40,12 +39,14 @@ section {
  * Body config
  */
 
+$hack-font: "Hack", monospace;
+
 body {
-  font-family: "Hack", monospace;
-  margin: 0;
-  flex-direction: column;
   display: flex;
   height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  font-family: $hack-font;
 }
 
 /**
@@ -55,7 +56,7 @@ body {
 
 a {
   background-color: transparent; /* 1 */
-  -webkit-text-decoration-skip: objects; /* 2 */
+  text-decoration-skip: objects; /* 2 */
 }
 
 /**
@@ -73,7 +74,7 @@ a:hover {
  */
 
 strong {
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 /**

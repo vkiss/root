@@ -3,8 +3,5 @@
 */
 
 ::selection {
-  background: rgba(255, 255, 255, 0.18); /* WebKit/Blink Browsers */
-}
-::-moz-selection {
-  background: rgba(255, 255, 255, 0.18); /* Gecko Browsers */
+  background: rgba(255, 255, 255, .18); /* WebKit/Blink Browsers */
 }

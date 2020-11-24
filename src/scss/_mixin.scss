@@ -1,44 +1,50 @@
 /**
  * media query mixin
  *              (yes, it can be nested)
- * 
+ *
  * use case sample #1:
  * @include mq(900)
  * -> @media screen and (max-width: 900px)
- * 
+ *
  * use case sample #2:
  * @include mq(901, min)
  * -> @media screen and (min-width: 901px)
- * 
+ *
  * use case sample #3:
  * @include mq(768, 1024)
  * -> @media screen and (min-width: 768px) and (max-width: 1024px)
- * 
+ *
  * use case sample #4:
  * @include mq(1200, 600)
  * -> @media screen and (min-width: 600px) and (max-width: 1200px)
  */
 
 @mixin mq($size, $minmax: max) {
-  $minmaxRender: '';
+  $minmaxRender: "";
 
   @if $minmax == min {
     $minmaxRender: "min-width";
-  } @else {
+  }
+
+  @else {
     $minmaxRender: "max-width";
   }
 
-  @if type-of($minmax) == 'number' {
+  @if type-of($minmax) == "number" {
     @if $size > $minmax {
       @media screen and (min-width: #{$minmax}px) and (max-width: #{$size}px) {
         @content;
       }
-    } @else {
+    }
+
+    @else {
       @media screen and (min-width: #{$size}px) and (max-width: #{$minmax}px) {
         @content;
       }
     }
-  } @else {
+  }
+
+  @else {
     @media screen and (#{$minmaxRender}: #{$size}px) {
       @content;
     }

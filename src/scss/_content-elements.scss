@@ -9,14 +9,14 @@ section h1 {
 }
 
 a {
-  text-decoration: none;
   border-bottom: 1px solid currentColor;
+  text-decoration: none;
 }
 
 section {
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
+  flex-grow: 1;
   align-items: center;
   justify-content: flex-end;
 
@@ -27,15 +27,15 @@ section {
 
 aside {
   @include not-mobile {
-    overflow: hidden;
-    color: #7f848e;
-    line-height: 18px;
     position: fixed;
-    left: 10px;
     bottom: 10px;
-    padding: 18px 0 18px 3ch;
+    left: 10px;
+    overflow: hidden;
     max-width: 185px;
+    padding: 18px 0 18px 3ch;
+    color: #7F848E;
     font-size: 10px;
+    line-height: 18px;
   }
 
   @include mq(950, min) {
@@ -55,25 +55,25 @@ aside {
   }
 
   @at-root %aside-before-after {
-    white-space: pre;
     position: absolute;
     left: 0;
     line-height: 18px;
+    white-space: pre;
   }
 
   &:before {
     @extend %aside-before-after;
 
-    content: "/**\A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  ";
     top: 0;
+    content: "/**\A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  \A  *  ";
   }
 
   &:after {
     @extend %aside-before-after;
 
-    content: " */";
     bottom: 0;
-    background-color: #282c34;
+    background-color: #282C34;
+    content: " */";
   }
 
   p {
