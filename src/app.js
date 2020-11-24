@@ -1,16 +1,16 @@
-import './style.scss';
+import "./style.scss";
 
-import footerNotes  from './footerNotes';
-import logoOneDrive from './assets/onedrive.svg';
-import logoPicPay   from './assets/picpay.svg';
-import logoUmbler   from './assets/umbler.svg';
-import logoXP       from './assets/xp.svg';
+import footerNotes from "./footerNotes";
+import logoOneDrive from "./assets/onedrive.svg";
+import logoPicPay from "./assets/picpay.svg";
+import logoUmbler from "./assets/umbler.svg";
+import logoXP from "./assets/xp.svg";
 
 function init() {
   const promoLoop = createPromoLoop();
 
-  createPromoBox(promoLoop[(Math.floor(Math.random() * promoLoop.length))]);
-  createFooterNotes(footerNotes);
+  createPromoBox( promoLoop[( Math.floor( Math.random() * promoLoop.length ) )] );
+  createFooterNotes( footerNotes );
 }
 
 function createPromoLoop() {
@@ -53,48 +53,48 @@ function createPromoLoop() {
       text: "Salve seus arquivos e fotos no OneDrive e acesse em qualquer dispositivo, de praticamente qualquer lugar.",
       callout: "Crie sua conta e ganhe 0.5gb de armazenamento extra."
     }
-  ]
+  ];
 
   let returnLoop = [];
 
-  for (let i = 0; i < promos.length; i++) {
-    const numberToRepeat = (promos[i].matter !== undefined ? promos[i].matter : 1);
+  for ( let i = 0; i < promos.length; i++ ) {
+    const numberToRepeat = ( promos[i].matter !== undefined ? promos[i].matter : 1 );
 
-    for (let o = 0; o < numberToRepeat; o++) {
-      returnLoop.push(promos[i]);
+    for ( let o = 0; o < numberToRepeat; o++ ) {
+      returnLoop.push( promos[i] );
     }
   }
 
   return returnLoop;
 }
 
-function createPromoBox(promo) {
-  const promoBoxEl = document.getElementById("promo-box");
+function createPromoBox( promo ) {
+  const promoBoxEl = document.getElementById( "promo-box" );
 
-  promoBoxEl.setAttribute("href", promo.href);
-  promoBoxEl.setAttribute("target", promo.target);
+  promoBoxEl.setAttribute( "href", promo.href );
+  promoBoxEl.setAttribute( "target", promo.target );
   promoBoxEl.className = "promo-box";
 
   promoBoxEl.innerHTML = `
     <header class="promo-box-header">${promo.hat}</header>
     <div class="promo-box-body">
-      <div ${(promo.imgSize ? `style="min-width: calc(${promo.imgSize}px + 1rem)"` : "")} class="promo-box-media">
-        <img ${(promo.imgSize ? `style="max-width: ${promo.imgSize}px"` : "")} src="${promo.img}" />
+      <div ${( promo.imgSize ? `style="min-width: calc(${promo.imgSize}px + 1rem)"` : "" )} class="promo-box-media">
+        <img ${( promo.imgSize ? `style="max-width: ${promo.imgSize}px"` : "" )} src="${promo.img}" />
       </div>
       <div class="promo-box-ad">
         <p>${promo.text}</p>
       </div>
     </div>
-  `
+  `;
 }
 
-function createFooterNotes(data) {
-  data.map((item) => {
-    let thisPElement = document.createElement("P");
+function createFooterNotes( data ) {
+  data.map( ( item ) => {
+    let thisPElement = document.createElement( "P" );
     thisPElement.innerHTML = `.${item}`;
 
-    document.getElementById("footer-notes").appendChild(thisPElement);
-  })
+    document.getElementById( "footer-notes" ).appendChild( thisPElement );
+  } );
 }
 
 init();

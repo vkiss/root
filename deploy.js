@@ -1,6 +1,6 @@
-const FtpDeploy    = require("ftp-deploy");
-const ftpDeploy    = new FtpDeploy();
-const deployConfig = require('./deployConfig');
+const FtpDeploy = require( "ftp-deploy" );
+const ftpDeploy = new FtpDeploy();
+const deployConfig = require( "./deployConfig" );
 
 const config = {
   user: deployConfig.ftp.user,
@@ -16,9 +16,9 @@ const config = {
 };
 
 // use with promises
-if (deployConfig.publishEnabled) {
+if ( deployConfig.publishEnabled ) {
   ftpDeploy
-  .deploy(config)
-  .then(res => console.log("finished:", res))
-  .catch(err => console.log(err));
+    .deploy( config )
+    .then( res => console.log( "finished:", res ) )
+    .catch( err => console.log( err ) );
 }

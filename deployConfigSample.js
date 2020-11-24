@@ -1,6 +1,6 @@
 module.exports = {
   // enable/disable publish task
-  publishEnabled: true, 
+  publishEnabled: true,
 
   ftp: {
     host: "string",
