@@ -1,15 +1,15 @@
-const path                          = require('path');
-const webpack                       = require("webpack");
-const HtmlWebpackPlugin             = require("html-webpack-plugin");
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
-const CopyPlugin                    = require('copy-webpack-plugin');
-const { CleanWebpackPlugin }        = require('clean-webpack-plugin');
+const path = require( "path" );
+const webpack = require( "webpack" );
+const HtmlWebpackPlugin = require( "html-webpack-plugin" );
+const HtmlWebpackInlineSourcePlugin = require( "html-webpack-inline-source-plugin" );
+const CopyPlugin = require( "copy-webpack-plugin" );
+const { CleanWebpackPlugin } = require( "clean-webpack-plugin" );
 
 module.exports = {
-  entry: './src/app.js',
+  entry: "./src/app.js",
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: "[name].bundle.js",
+    path: path.resolve( __dirname, "dist" )
   },
   module: {
     rules: [
@@ -17,33 +17,33 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
+            presets: ["@babel/preset-env"]
           }
         }
       },
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
+          "style-loader",
+          "css-loader",
+          "sass-loader"
         ],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
         use: [
           {
-            loader: 'file-loader'
+            loader: "file-loader"
           },
         ],
       },
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      inlineSource: 'main.bundle.js',
+    new HtmlWebpackPlugin( {
+      inlineSource: "main.bundle.js",
       title: "Vinicius Kiss - Desenvolvedor Frontend",
       templateParameters: {
         email: "contato@vkiss.com.br",
@@ -62,7 +62,7 @@ module.exports = {
           },
           {
             label: "stackoverflow",
-            href: "https://stackoverflow.com/story/vinik",
+            href: "https://stackoverflow.com/users/5446961/vinicius-kiss",
             target: "_blank",
           },
           {
@@ -73,28 +73,28 @@ module.exports = {
         ],
       },
       meta: {
-        viewport: 'width=device-width,minimum-scale=1',
-        description: 'Escrevo códigos para deixar sites bonitos.',
-        robots: 'index, follow'
+        viewport: "width=device-width,minimum-scale=1",
+        description: "Escrevo códigos para deixar sites bonitos.",
+        robots: "index, follow"
       },
       minify: {
         removeComments: true,
         collapseWhitespace: true
       },
-    }),
-    new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin),
+    } ),
+    new HtmlWebpackInlineSourcePlugin( HtmlWebpackPlugin ),
     new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({
-      VERSION: JSON.stringify(require("./package.json").version)
-    }),
-    new CopyPlugin({
+    new webpack.DefinePlugin( {
+      VERSION: JSON.stringify( require( "./package.json" ).version )
+    } ),
+    new CopyPlugin( {
       patterns: [
-        { from: './rootFiles', to: './' },
+        { from: "./rootFiles", to: "./" },
       ],
-    }),
+    } ),
   ],
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
     open: true
   },
 };
