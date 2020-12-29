@@ -6,14 +6,7 @@ import logoPicPay from "./assets/picpay.svg";
 import logoUmbler from "./assets/umbler.svg";
 import logoXP from "./assets/xp.svg";
 
-function init() {
-  const promoLoop = createPromoLoop();
-
-  createPromoBox( promoLoop[( Math.floor( Math.random() * promoLoop.length ) )] );
-  createFooterNotes( footerNotes );
-}
-
-function createPromoLoop() {
+const createPromoLoop = () => {
   const promos = [
     {
       hat: "AD",
@@ -66,9 +59,9 @@ function createPromoLoop() {
   }
 
   return returnLoop;
-}
+};
 
-function createPromoBox( promo ) {
+const createPromoBox = ( promo ) => {
   const promoBoxEl = document.getElementById( "promo-box" );
 
   promoBoxEl.setAttribute( "href", promo.href );
@@ -82,19 +75,32 @@ function createPromoBox( promo ) {
         <img ${( promo.imgSize ? `style="max-width: ${promo.imgSize}px"` : "" )} src="${promo.img}" />
       </div>
       <div class="promo-box-ad">
-        <p>${promo.text}</p>
+        <p>${promo.text} <strong>${promo.callout}</strong></p>
       </div>
     </div>
   `;
-}
+};
 
-function createFooterNotes( data ) {
+const createFooterNotes = ( data ) => {
   data.map( ( item ) => {
     let thisPElement = document.createElement( "P" );
     thisPElement.innerHTML = `.${item}`;
 
     document.getElementById( "footer-notes" ).appendChild( thisPElement );
   } );
-}
+};
+
+const consoleController = () => {
+  console.log( "Olá, temos vagas para devs frontend. Mande um e-mail para %cvinicius.kiss@xpi.com.br%c.", "color: #61AFEF", "color: white" );
+  console.log( "Para freelas, me contate via %ccontato@vkiss.com.br%c :)", "color: #EF596F", "color: white" );
+};
+
+const init = () => {
+  const promoLoop = createPromoLoop();
+
+  createPromoBox( promoLoop[( Math.floor( Math.random() * promoLoop.length ) )] );
+  createFooterNotes( footerNotes );
+  consoleController();
+};
 
 init();
