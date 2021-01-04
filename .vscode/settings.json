@@ -1,0 +1,11 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "workbench.colorCustomizations": {
+    "activityBar.activeBorder": "#ef596f",
+    "activityBarBadge.background": "#ef596f",
+    // "activityBarBadge.foreground": "#000000",
+    "tab.activeBorder": "#ef596f",
+    "panelTitle.activeBorder": "#ef596f"
+  }
+}
