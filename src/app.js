@@ -90,6 +90,11 @@ const createFooterNotes = ( data ) => {
   } );
 };
 
+const mobileHeightPortManager = () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty( "--vh", `${vh}px` );
+};
+
 const consoleController = () => {
   console.log( "Olá, temos vagas para devs frontend. Mande um e-mail para %cvinicius.kiss@xpi.com.br%c.", "color: #61AFEF", "color: white" );
   console.log( "Para freelas, me contate via %ccontato@vkiss.com.br%c :)", "color: #EF596F", "color: white" );
@@ -101,6 +106,8 @@ const init = () => {
   createPromoBox( promoLoop[( Math.floor( Math.random() * promoLoop.length ) )] );
   createFooterNotes( footerNotes );
   consoleController();
+  mobileHeightPortManager();
 };
 
 init();
+window.addEventListener( "resize", mobileHeightPortManager );
