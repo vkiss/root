@@ -6,6 +6,13 @@ import logoPicPay from "./assets/picpay.svg";
 import logoUmbler from "./assets/umbler.svg";
 import logoXP from "./assets/xp.svg";
 
+const addStyle = ( styleString ) => {
+  const style = document.createElement( "style" );
+
+  style.textContent = styleString;
+  document.head.append( style );
+};
+
 const createPromoLoop = () => {
   const promos = [
     {
@@ -100,9 +107,96 @@ const consoleController = () => {
   console.log( "Para freelas, me contate via %ccontato@vkiss.com.br%c :)", "color: #EF596F", "color: white" );
 };
 
+const randomizeColorPallete = () => {
+  const colorPalletes = [
+    /* [ brackets, html_element, html_attribute, html_key, html_comment, site_bg, pain_text, differ_link ] */
+    [ "#FFFFFF", "#EA6074", "#FFB56F", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF", "#2BBAC5" ],
+    [ "#D4BE98", "#EA6962", "#D8A657", "#7DAEA3", "#928374", "#202020", "#E2CCAE", "#D3869B" ],
+    [ "#B3EEFF", "#69B7F7", "#8a65a0", "#CBA3C7", "#797979", "#282C35", "#FFFFFF", "#69B7F7" ],
+  ];
+
+  const r = Math.floor( Math.random() * colorPalletes.length ) ;
+
+  addStyle( `
+  html,
+  aside:after {
+    background-color: ${colorPalletes[r][5]}
+  }
+
+  .html-code {
+    color: ${colorPalletes[r][6]};
+  }
+
+  .hover-before,
+  .hover-after {
+    color: ${colorPalletes[r][0]};
+  }
+
+  .html-element {
+    color: ${colorPalletes[r][1]};
+  }
+
+  .html-attribute {
+    color: ${colorPalletes[r][2]};
+  }
+
+  .html-key {
+    color: ${colorPalletes[r][3]};
+  }
+
+  .html-comment {
+    color: ${colorPalletes[r][4]};
+  }
+
+  @media screen and (max-width: 899px) {
+    a {
+      color: ${colorPalletes[r][6]};
+    }
+
+    a.mobile-cta {
+      color: ${colorPalletes[r][1]};
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    aside {
+      color: ${colorPalletes[r][4]};
+    }
+
+    a {
+      color: ${colorPalletes[r][7]};
+    }
+
+    a:not(.promo-box):hover {
+      border-bottom-color: ${colorPalletes[r][7]};
+      background-color: ${colorPalletes[r][7]};
+      color: ${colorPalletes[r][5]};
+    }
+
+    a.html-code:hover { 
+      color: ${colorPalletes[r][5]};
+      border-bottom-color: ${colorPalletes[r][6]};
+      background-color: ${colorPalletes[r][6]};
+    }
+
+    aside a:not(.promo-box) {
+      color: ${colorPalletes[r][4]}
+    }
+
+    aside a:not(.promo-box):hover {
+      color: ${colorPalletes[r][5]};
+      border-bottom-color: ${colorPalletes[r][4]};
+      background-color: ${colorPalletes[r][4]};
+    }
+  }
+  ` );
+
+};
+
 const init = () => {
   const promoLoop = createPromoLoop();
 
+  randomizeColorPallete();
   createPromoBox( promoLoop[( Math.floor( Math.random() * promoLoop.length ) )] );
   createFooterNotes( footerNotes );
   consoleController();

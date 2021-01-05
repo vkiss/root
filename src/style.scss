@@ -1,16 +1,15 @@
 @import
-  './scss/mixin',
-  './scss/normalize';
+  "./scss/mixin",
+  "./scss/normalize";
 
 $mobile-resolution: 900;
 
 @import
-  './scss/browser-behaviours',
-  './scss/footer',
-  './scss/content-elements',
-  './scss/fake-html',
-  './scss/links',
-  './scss/promo-box';
+  "./scss/browser-behaviours",
+  "./scss/footer",
+  "./scss/content-elements",
+  "./scss/fake-html",
+  "./scss/promo-box";
 
 // trumps
-@import './scss/helpers';
+@import "./scss/helpers";

@@ -1,12 +1,14 @@
+$promo-box-border: 1px solid rgba(255, 255, 255, .1);
+
 .promo-box {
-  border: 1px solid rgba(95, 95, 95, .78);
+  border: $promo-box-border;
   color: #FFF;
   font-size: 12px;
   text-decoration: none;
   transition: transform .2s, box-shadow .2s;
 
   &:hover {
-    box-shadow: .4rem .4rem 0 #525355;
+    box-shadow: .4rem .4rem 0 rgba(255, 255, 255, .15);
     text-decoration: none;
     transform: translate(-.4rem, -.4rem);
   }
@@ -24,9 +26,9 @@
 
   &-header {
     padding: .5rem 0;
-    border-bottom: 1px solid rgba(95, 95, 95, .78);
+    border-bottom: $promo-box-border;
     background-color: transparent;
-    color: #CCC;
+    color: rgba(255, 255, 255, .7);
     text-align: center;
   }
 

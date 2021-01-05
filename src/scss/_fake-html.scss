@@ -10,7 +10,6 @@
         position: absolute;
         bottom: 1px;
         display: block;
-        color: #FFF !important;
         font-size: 14px;
         font-weight: 400;
         pointer-events: none;
@@ -33,19 +32,7 @@
     }
   }
 
-  &-element {
-    color: #EF596F;
-  }
-
   &-attribute {
-    color: #D19A66;
-  }
-
-  &-key {
-    color: #89CA78;
-  }
-
-  &-comment {
-    color: #7F848E;
+    font-style: italic;
   }
 }

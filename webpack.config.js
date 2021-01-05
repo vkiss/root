@@ -61,11 +61,6 @@ module.exports = {
             target: "_blank",
           },
           {
-            label: "stackoverflow",
-            href: "https://stackoverflow.com/users/5446961/vinicius-kiss",
-            target: "_blank",
-          },
-          {
             label: "picpay",
             href: "https://app.picpay.com/user/vkiss",
             target: "_blank",

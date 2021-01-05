@@ -33,7 +33,6 @@ aside {
     overflow: hidden;
     max-width: 185px;
     padding: 18px 0 18px 3ch;
-    color: #7F848E;
     font-size: 10px;
     line-height: 18px;
   }
@@ -72,7 +71,6 @@ aside {
     @extend %aside-before-after;
 
     bottom: 0;
-    background-color: #282C34;
     content: " */";
   }
 
