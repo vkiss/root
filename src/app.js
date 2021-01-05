@@ -7,10 +7,13 @@ import logoUmbler from "./assets/umbler.svg";
 import logoXP from "./assets/xp.svg";
 
 const addStyle = ( styleString ) => {
-  const style = document.createElement( "style" );
+  const styleTagOnDOM = document.querySelector( "style" );
 
-  style.textContent = styleString;
-  document.head.append( style );
+  const minifiedCustomCSS = styleString.replace( /\r?\n|\r|\t| /g, "" ).replace( /_/g, " " );
+
+  console.log( minifiedCustomCSS );
+
+  styleTagOnDOM.innerHTML = `${styleTagOnDOM.innerText} ${minifiedCustomCSS}`;
 };
 
 const createPromoLoop = () => {
@@ -148,7 +151,7 @@ const randomizeColorPallete = () => {
     color: ${colorPalletes[r][4]};
   }
 
-  @media screen and (max-width: 899px) {
+  @media_screen_and_(max-width:_899px) {
     a {
       color: ${colorPalletes[r][6]};
     }
@@ -158,7 +161,7 @@ const randomizeColorPallete = () => {
     }
   }
 
-  @media screen and (min-width: 900px) {
+  @media_screen_and_(min-width:_900px) {
     aside {
       color: ${colorPalletes[r][4]};
     }
@@ -179,11 +182,11 @@ const randomizeColorPallete = () => {
       background-color: ${colorPalletes[r][6]};
     }
 
-    aside a:not(.promo-box) {
+    aside_a:not(.promo-box) {
       color: ${colorPalletes[r][4]}
     }
 
-    aside a:not(.promo-box):hover {
+    aside_a:not(.promo-box):hover {
       color: ${colorPalletes[r][5]};
       border-bottom-color: ${colorPalletes[r][4]};
       background-color: ${colorPalletes[r][4]};
