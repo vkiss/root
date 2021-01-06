@@ -9,8 +9,8 @@
     "url": "http://vkiss.com.br/"
   },
   "scripts": {
-    "dev": "webpack-dev-server --mode development --hot --inline",
-    "build": "webpack --mode production",
+    "dev": "node helpers/organizeEnvs dev && webpack-dev-server --mode development --hot --inline",
+    "build": "node helpers/organizeEnvs prod && webpack --mode production",
     "deploy": "npm run build && node deploy"
   },
   "homepage": "https://github.com/vkiss/root#readme",
@@ -28,6 +28,7 @@
     "@babel/preset-env": "^7.12.11",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
+    "chalk": "^4.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.4.1",
     "css-loader": "^4.3.0",
