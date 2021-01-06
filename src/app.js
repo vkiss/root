@@ -1,17 +1,23 @@
 import "./style.scss";
 
+/**
+ * Imports
+ */
+
 import footerNotes from "./footerNotes";
 import logoOneDrive from "./assets/onedrive.svg";
 import logoPicPay from "./assets/picpay.svg";
 import logoUmbler from "./assets/umbler.svg";
 import logoXP from "./assets/xp.svg";
 
+/**
+ * Functions
+ */
+
 const addStyle = ( styleString ) => {
   const styleTagOnDOM = document.querySelector( "style" );
 
   const minifiedCustomCSS = styleString.replace( /\r?\n|\r|\t| /g, "" ).replace( /_/g, " " );
-
-  console.log( minifiedCustomCSS );
 
   styleTagOnDOM.innerHTML = `${styleTagOnDOM.innerText} ${minifiedCustomCSS}`;
 };
@@ -91,13 +97,20 @@ const createPromoBox = ( promo ) => {
   `;
 };
 
-const createFooterNotes = ( data ) => {
-  data.map( ( item ) => {
-    let thisPElement = document.createElement( "P" );
-    thisPElement.innerHTML = `.${item}`;
+const createFooterNotes = ( data, selectedColorPallete ) => {
+  for ( let i = 0; i < data.length; i++ ) {
+    if ( data.length - 1 === i && selectedColorPallete.name ) {
+      const palleteItemP = document.createElement( "P" );
+      palleteItemP.innerHTML = `.html syntax style based on ${( selectedColorPallete.link ? `<a target=\"_blank\" href="${selectedColorPallete.link}">` : "" )}${selectedColorPallete.name}${( selectedColorPallete.link ? "</a>" : "" )}'s color palette`;
+
+      document.getElementById( "footer-notes" ).appendChild( palleteItemP );
+    }
+
+    const thisPElement = document.createElement( "P" );
+    thisPElement.innerHTML = `.${data[i]}`;
 
     document.getElementById( "footer-notes" ).appendChild( thisPElement );
-  } );
+  }
 };
 
 const mobileHeightPortManager = () => {
@@ -110,98 +123,111 @@ const consoleController = () => {
   console.log( "Para freelas, me contate via %ccontato@vkiss.com.br%c :)", "color: #EF596F", "color: white" );
 };
 
-const randomizeColorPallete = () => {
-  const colorPalletes = [
+const validatePalette = () => {
+
+};
+
+const randomizeColorPalette = () => {
+  const colorPalettes = [
     /* [ brackets, html_element, html_attribute, html_key, html_comment, site_bg, pain_text, differ_link ] */
-    [ "#FFFFFF", "#EA6074", "#FFB56F", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF", "#2BBAC5" ],
-    [ "#D4BE98", "#EA6962", "#D8A657", "#7DAEA3", "#928374", "#202020", "#E2CCAE", "#D3869B" ],
-    [ "#B3EEFF", "#69B7F7", "#8a65a0", "#CBA3C7", "#797979", "#282C35", "#FFFFFF", "#69B7F7" ],
+    {
+      "name": "one dark pro",
+      "link": "https://github.com/Binaryify/OneDark-Pro",
+      "colors": [ "#FFFFFF", "#EA6074", "#FFB56F", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF", "#2BBAC5" ]
+    },
+    {
+      "colors": [ "#D4BE98", "#EA6962", "#D8A657", "#7DAEA3", "#928374", "#202020", "#E2CCAE", "#D3869B" ]
+    },
+    {
+      "colors": [ "#B3EEFF", "#69B7F7", "#8a65a0", "#CBA3C7", "#797979", "#282C35", "#FFFFFF", "#69B7F7" ]
+    }
   ];
 
-  const r = Math.floor( Math.random() * colorPalletes.length ) ;
+  const randomPalette = colorPalettes[Math.floor( Math.random() * colorPalettes.length )] ;
 
   addStyle( `
   html,
   aside:after {
-    background-color: ${colorPalletes[r][5]}
+    background-color: ${randomPalette.colors[5]}
   }
 
   .html-code {
-    color: ${colorPalletes[r][6]};
+    color: ${randomPalette.colors[6]};
   }
 
   .hover-before,
   .hover-after {
-    color: ${colorPalletes[r][0]};
+    color: ${randomPalette.colors[0]};
   }
 
   .html-element {
-    color: ${colorPalletes[r][1]};
+    color: ${randomPalette.colors[1]};
   }
 
   .html-attribute {
-    color: ${colorPalletes[r][2]};
+    color: ${randomPalette.colors[2]};
   }
 
   .html-key {
-    color: ${colorPalletes[r][3]};
+    color: ${randomPalette.colors[3]};
   }
 
   .html-comment {
-    color: ${colorPalletes[r][4]};
+    color: ${randomPalette.colors[4]};
   }
 
   @media_screen_and_(max-width:_899px) {
     a {
-      color: ${colorPalletes[r][6]};
+      color: ${randomPalette.colors[6]};
     }
 
     a.mobile-cta {
-      color: ${colorPalletes[r][1]};
+      color: ${randomPalette.colors[1]};
     }
   }
 
   @media_screen_and_(min-width:_900px) {
     aside {
-      color: ${colorPalletes[r][4]};
+      color: ${randomPalette.colors[4]};
     }
 
     a {
-      color: ${colorPalletes[r][7]};
+      color: ${randomPalette.colors[7]};
     }
 
     a:not(.promo-box):hover {
-      border-bottom-color: ${colorPalletes[r][7]};
-      background-color: ${colorPalletes[r][7]};
-      color: ${colorPalletes[r][5]};
+      border-bottom-color: ${randomPalette.colors[7]};
+      background-color: ${randomPalette.colors[7]};
+      color: ${randomPalette.colors[5]};
     }
 
     a.html-code:hover { 
-      color: ${colorPalletes[r][5]};
-      border-bottom-color: ${colorPalletes[r][6]};
-      background-color: ${colorPalletes[r][6]};
+      color: ${randomPalette.colors[5]};
+      border-bottom-color: ${randomPalette.colors[6]};
+      background-color: ${randomPalette.colors[6]};
     }
 
     aside_a:not(.promo-box) {
-      color: ${colorPalletes[r][4]}
+      color: ${randomPalette.colors[4]}
     }
 
     aside_a:not(.promo-box):hover {
-      color: ${colorPalletes[r][5]};
-      border-bottom-color: ${colorPalletes[r][4]};
-      background-color: ${colorPalletes[r][4]};
+      color: ${randomPalette.colors[5]};
+      border-bottom-color: ${randomPalette.colors[4]};
+      background-color: ${randomPalette.colors[4]};
     }
   }
   ` );
+
+  createFooterNotes( footerNotes, randomPalette );
 
 };
 
 const init = () => {
   const promoLoop = createPromoLoop();
 
-  randomizeColorPallete();
+  randomizeColorPalette();
   createPromoBox( promoLoop[( Math.floor( Math.random() * promoLoop.length ) )] );
-  createFooterNotes( footerNotes );
   consoleController();
   mobileHeightPortManager();
 };
