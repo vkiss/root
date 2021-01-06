@@ -220,6 +220,31 @@ const randomizeColorPalette = ( colorPalettes ) => {
   createFooterNotes( footerNotes, randomPalette );
 };
 
+const injectTrailingSpaces = ( element ) => {
+  const isHTMLCodeElement = element.querySelector( ".hover-before" ) !== null;
+  const hoverBefore = element.querySelector( ".hover-before" );
+  const hoverAfter = element.querySelector( ".hover-after" );
+
+  const innerTextElement = isHTMLCodeElement ? ( element.innerText.split( "\n" )[1] === "•" ? element.innerText.split( "\n" )[3] : element.innerText.split( "\n" )[1] ) : element.innerText;
+  const innerText = innerTextElement.replace( / /g, "<span class=\"html-space\"> <span>•</span></span>" );
+  element.innerHTML = innerText.replace( "<!--", "&lt;!--" );
+
+
+  if ( isHTMLCodeElement ) {
+    element.prepend( hoverBefore );
+    element.appendChild( hoverAfter );
+  }
+
+};
+
+const reconstructHTMLElementsWithTrailingSpaces = () => {
+  const fakeHTMLElements = document.querySelectorAll( ".html-code" );
+
+  for ( let i = 0; i < fakeHTMLElements.length; i++ ) {
+    injectTrailingSpaces( fakeHTMLElements[i] );
+  }
+};
+
 const init = () => {
   const promoLoop = createPromoLoop();
 
@@ -227,6 +252,8 @@ const init = () => {
   createPromoBox( promoLoop[randomIntFromInterval( 0, promoLoop.length - 1 )] );
   consoleController();
   mobileHeightPortManager();
+  reconstructHTMLElementsWithTrailingSpaces();
+  injectTrailingSpaces( document.querySelector( ".html-comment" ) );
 };
 
 init();

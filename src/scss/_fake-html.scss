@@ -22,13 +22,30 @@
     .hover-before {
       @extend %hover-before-after;
 
-      right: calc(100% + 5px);
+      right: calc(100% + 1px);
     }
 
     .hover-after {
       @extend %hover-before-after;
 
-      left: calc(100% + 5px);
+      left: calc(100% + 1px);
+    }
+  }
+
+  &-space {
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: .2;
+      pointer-events: none;
+      transform: scale(.6);
+
+      &::selection {
+        background: transparent;
+      }
     }
   }
 }

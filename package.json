@@ -1,6 +1,6 @@
 {
   "name": "vkiss",
-  "version": "3.2.2",
+  "version": "3.3.0",
   "description": "",
   "main": "index.js",
   "author": {
@@ -9,6 +9,7 @@
     "url": "http://vkiss.com.br/"
   },
   "scripts": {
+    "start": "npm run dev",
     "dev": "node helpers/organizeEnvs dev && webpack-dev-server --mode development --hot --inline",
     "build": "node helpers/organizeEnvs prod && webpack --mode production",
     "deploy": "npm run build && node deploy"
