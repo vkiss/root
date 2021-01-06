@@ -5,13 +5,14 @@ import "./style.scss";
  */
 
 import footerNotes from "./footerNotes";
+import themes from "./themes";
 import logoOneDrive from "./assets/onedrive.svg";
 import logoPicPay from "./assets/picpay.svg";
 import logoUmbler from "./assets/umbler.svg";
 import logoXP from "./assets/xp.svg";
 
 /**
- * Functions
+ * Utils
  */
 
 const addStyle = ( styleString ) => {
@@ -21,6 +22,14 @@ const addStyle = ( styleString ) => {
 
   styleTagOnDOM.innerHTML = `${styleTagOnDOM.innerText} ${minifiedCustomCSS}`;
 };
+
+const randomIntFromInterval = ( min, max ) => {
+  return Math.floor( Math.random() * ( max - min + 1 ) + min );
+};
+
+/**
+ * Functions
+ */
 
 const createPromoLoop = () => {
   const promos = [
@@ -123,36 +132,19 @@ const consoleController = () => {
   console.log( "Para freelas, me contate via %ccontato@vkiss.com.br%c :)", "color: #EF596F", "color: white" );
 };
 
-const validatePalette = () => {
-
-};
-
-const randomizeColorPalette = () => {
-  const colorPalettes = [
-    /* [ brackets, html_element, html_attribute, html_key, html_comment, site_bg, pain_text, differ_link ] */
-    {
-      "name": "one dark pro",
-      "link": "https://github.com/Binaryify/OneDark-Pro",
-      "colors": [ "#FFFFFF", "#EA6074", "#FFB56F", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF", "#2BBAC5" ]
-    },
-    {
-      "colors": [ "#D4BE98", "#EA6962", "#D8A657", "#7DAEA3", "#928374", "#202020", "#E2CCAE", "#D3869B" ]
-    },
-    {
-      "colors": [ "#B3EEFF", "#69B7F7", "#8a65a0", "#CBA3C7", "#797979", "#282C35", "#FFFFFF", "#69B7F7" ]
-    }
-  ];
-
-  const randomPalette = colorPalettes[Math.floor( Math.random() * colorPalettes.length )] ;
+const randomizeColorPalette = ( colorPalettes ) => {
+  const randomPalette = colorPalettes[randomIntFromInterval( 0, colorPalettes.length - 1 )];
+  const filterResult = ( number ) => { return ( number === 3 ? 4 : number ); };
+  const differLinkColor = randomPalette.colors[filterResult( randomIntFromInterval( 1, 3 ) )];
 
   addStyle( `
   html,
   aside:after {
-    background-color: ${randomPalette.colors[5]}
+    background-color: ${randomPalette.colors[6]}
   }
 
   .html-code {
-    color: ${randomPalette.colors[6]};
+    color: ${randomPalette.colors[7]};
   }
 
   .hover-before,
@@ -165,69 +157,74 @@ const randomizeColorPalette = () => {
   }
 
   .html-attribute {
+    font-style: italic;
     color: ${randomPalette.colors[2]};
   }
 
-  .html-key {
+  .html-equal-sign {
     color: ${randomPalette.colors[3]};
   }
 
-  .html-comment {
+  .html-key {
     color: ${randomPalette.colors[4]};
+  }
+
+  .html-comment {
+    font-style: italic;
+    color: ${randomPalette.colors[5]};
   }
 
   @media_screen_and_(max-width:_899px) {
     a {
-      color: ${randomPalette.colors[6]};
+      color: ${randomPalette.colors[7]};
     }
 
     a.mobile-cta {
-      color: ${randomPalette.colors[1]};
+      color: ${differLinkColor};
     }
   }
 
   @media_screen_and_(min-width:_900px) {
     aside {
-      color: ${randomPalette.colors[4]};
+      color: ${randomPalette.colors[5]};
     }
 
     a {
-      color: ${randomPalette.colors[7]};
+      color: ${differLinkColor};
     }
 
     a:not(.promo-box):hover {
-      border-bottom-color: ${randomPalette.colors[7]};
-      background-color: ${randomPalette.colors[7]};
-      color: ${randomPalette.colors[5]};
+      border-bottom-color: ${differLinkColor};
+      background-color: ${differLinkColor};
+      color: ${randomPalette.colors[6]};
     }
 
     a.html-code:hover { 
-      color: ${randomPalette.colors[5]};
-      border-bottom-color: ${randomPalette.colors[6]};
-      background-color: ${randomPalette.colors[6]};
+      color: ${randomPalette.colors[6]};
+      border-bottom-color: ${randomPalette.colors[7]};
+      background-color: ${randomPalette.colors[7]};
     }
 
     aside_a:not(.promo-box) {
-      color: ${randomPalette.colors[4]}
+      color: ${randomPalette.colors[5]}
     }
 
     aside_a:not(.promo-box):hover {
-      color: ${randomPalette.colors[5]};
-      border-bottom-color: ${randomPalette.colors[4]};
-      background-color: ${randomPalette.colors[4]};
+      color: ${randomPalette.colors[6]};
+      border-bottom-color: ${randomPalette.colors[5]};
+      background-color: ${randomPalette.colors[5]};
     }
   }
   ` );
 
   createFooterNotes( footerNotes, randomPalette );
-
 };
 
 const init = () => {
   const promoLoop = createPromoLoop();
 
-  randomizeColorPalette();
-  createPromoBox( promoLoop[( Math.floor( Math.random() * promoLoop.length ) )] );
+  randomizeColorPalette( themes );
+  createPromoBox( promoLoop[randomIntFromInterval( 0, promoLoop.length - 1 )] );
   consoleController();
   mobileHeightPortManager();
 };
