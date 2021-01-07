@@ -129,13 +129,12 @@ const mobileHeightPortManager = () => {
   document.documentElement.style.setProperty( "--vh", `${vh}px` );
 };
 
-const consoleController = () => {
-  console.log( "Olá, temos vagas para devs frontend. Mande um e-mail para %cvinicius.kiss@xpi.com.br%c.", "color: #61AFEF", "color: white" );
-  console.log( "Para freelas, me contate via %ccontato@vkiss.com.br%c :)", "color: #EF596F", "color: white" );
+const consoleController = ( randomPalette ) => {
+  console.log( "Olá, temos vagas para devs frontend. Mande um e-mail para %cvinicius.kiss@xpi.com.br%c.", `color: ${randomPalette.colors[2]}`, "color: white" );
+  console.log( "Para freelas, me contate via %ccontato@vkiss.com.br%c :)", `color: ${randomPalette.colors[1]}`, "color: white" );
 };
 
-const randomizeColorPalette = ( colorPalettes ) => {
-  const randomPalette = colorPalettes[randomIntFromInterval( 0, colorPalettes.length - 1 )];
+const randomizeColorPalette = ( randomPalette ) => {
   const filterResult = ( number ) => { return ( number === 3 ? 4 : number ); };
   const differLinkColor = randomPalette.colors[filterResult( randomIntFromInterval( 1, 3 ) )];
 
@@ -251,10 +250,11 @@ const fillsvg = () => {
 
 const init = () => {
   const promoLoop = createPromoLoop();
+  const randomPalette = themes[randomIntFromInterval( 0, themes.length - 1 )];
 
-  randomizeColorPalette( themes );
+  randomizeColorPalette( randomPalette );
   createPromoBox( promoLoop[randomIntFromInterval( 0, promoLoop.length - 1 )] );
-  consoleController();
+  consoleController( randomPalette );
   mobileHeightPortManager();
   injectTrailingSpaces();
   fillsvg();
