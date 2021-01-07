@@ -9,29 +9,37 @@
   </head>
   <body>
     <section>
-      <p class="html-comment">&lt;!-- Vinicius Kiss --&gt;</p>
+      <p class="html-comment js-inject-trailing-space">&lt;!-- Vinicius Kiss --&gt;</p>
       <h1 class="html-code">
         <span class="hover-before">&lt;<span class="html-element">h1</span>&gt;</span>
-        Desenvolvedor Frontend
+        <span class="js-inject-trailing-space">
+          Desenvolvedor Frontend
+        </span>
         <span class="hover-after">&lt;/<span class="html-element">h1</span>&gt;</span>
       </h1>
       <p class="hide-mobile">
         <a class="html-code" target="_blank" rel="noopener noreferrer" href="mailto:<%= email %>">
           <span class="hover-before">&lt;<span class="html-element">a</span><span class="html-space"> <span>•</span></span><span class="html-attribute">href</span><span class="html-equal-sign">=</span><span class="html-key">"mailto:<%= email %>"</span>&gt;</span>
-          <%= email %>
+          <span class="js-inject-trailing-space">
+            <%= email %>
+          </span>
           <span class="hover-after">&lt;/<span class="html-element">a</span>&gt;</span>
         </a>
       </p>
       <p class="hide-mobile">
         <a class="html-code" target="_blank" rel="noopener noreferrer" href="<%= telefoneLink %>">
           <span class="hover-before">&lt;<span class="html-element">a</span><span class="html-space"> <span>•</span></span><span class="html-attribute">href</span><span class="html-equal-sign">=</span><span class="html-key">"<%= telefoneLink %>"</span>&gt;</span>
-          <%= telefone %>
+          <span class="js-inject-trailing-space">
+            <%= telefone %>
+          </span>
           <span class="hover-after">&lt;/<span class="html-element">a</span>&gt;</span>
         </a>
       </p>
       <p class="html-code hide-mobile">
         <span class="hover-before">&lt;<span class="html-element">p</span>&gt;</span>
-          <%= htmlWebpackPlugin.options.meta.description %>
+          <span class="js-inject-trailing-space">
+            <%= htmlWebpackPlugin.options.meta.description %>
+          </span>
         <span class="hover-after">&lt;/<span class="html-element">p</span>&gt;</span>
       </p>
     </section>
@@ -48,10 +56,10 @@
           </li>
         <% }); %>
         <li class="hide-desk">
-          <a class="mobile-cta" rel="noopener noreferrer" target="_blank" href="<%= telefoneLink %>"><%= telefone %></a>
+          <a class="mobile-cta js-inject-trailing-space" rel="noopener noreferrer" target="_blank" href="<%= telefoneLink %>"><%= telefone %></a>
         </li>
         <li class="hide-desk">
-          <a class="mobile-cta" rel="noopener noreferrer" target="_blank" href="mailto:<%= email %>"><%= email %></a>
+          <a class="mobile-cta js-inject-trailing-space" rel="noopener noreferrer" target="_blank" href="mailto:<%= email %>"><%= email %></a>
         </li>
       </ul>
     </footer>

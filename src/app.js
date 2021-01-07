@@ -26,6 +26,11 @@ const randomIntFromInterval = ( min, max ) => {
   return Math.floor( Math.random() * ( max - min + 1 ) + min );
 };
 
+const convertBlankSpaceToTrailingSpacesElement = ( string, replacePattern = " " ) => {
+  const replaceRegex = new RegExp( replacePattern, "g" );
+  return string.replace( replaceRegex, "<span class=\"html-space\"> <span>•</span></span>" );
+};
+
 /**
  * Functions
  */
@@ -90,7 +95,7 @@ const createPromoBox = ( promo ) => {
         ${promo.img}
       </figure>
       <div class="promo-box-ad">
-        <p>${promo.text} <strong>${promo.callout}</strong></p>
+        <p>${convertBlankSpaceToTrailingSpacesElement( promo.text )} <strong>${convertBlankSpaceToTrailingSpacesElement( promo.callout )}</strong></p>
       </div>
     </div>
   `;
@@ -107,13 +112,13 @@ const createFooterNotes = ( data, selectedColorPallete ) => {
   for ( let i = 0; i < data.length; i++ ) {
     if ( data.length - 1 === i && selectedColorPallete.name ) {
       const palleteItemP = document.createElement( "P" );
-      palleteItemP.innerHTML = `.html syntax style based on ${( selectedColorPallete.link ? `<a target=\"_blank\" href="${selectedColorPallete.link}">` : "" )}${selectedColorPallete.name}${( selectedColorPallete.link ? "</a>" : "" )}'s color palette`;
+      palleteItemP.innerHTML = `${convertBlankSpaceToTrailingSpacesElement( ".html syntax style based on " )}${( selectedColorPallete.link ? `<a target=\"_blank\" href="${selectedColorPallete.link}">` : "" )}${convertBlankSpaceToTrailingSpacesElement( selectedColorPallete.name )}${( selectedColorPallete.link ? "</a>" : "" )}${convertBlankSpaceToTrailingSpacesElement( "'s color palette" )}`;
 
       document.getElementById( "footer-notes" ).appendChild( palleteItemP );
     }
 
     const thisPElement = document.createElement( "P" );
-    thisPElement.innerHTML = `.${data[i]}`;
+    thisPElement.innerHTML = `.${convertBlankSpaceToTrailingSpacesElement( data[i], "\#" )}`;
 
     document.getElementById( "footer-notes" ).appendChild( thisPElement );
   }
@@ -226,41 +231,17 @@ const randomizeColorPalette = ( colorPalettes ) => {
   createFooterNotes( footerNotes, randomPalette );
 };
 
-const injectTrailingSpaces = ( element ) => {
-  const isHTMLCodeElement = element.querySelector( ".hover-before" ) !== null;
-  const hoverBefore = element.querySelector( ".hover-before" );
-  const hoverAfter = element.querySelector( ".hover-after" );
+const injectTrailingSpaces = () => {
+  const elementsToInjectTrailingSpace = document.querySelectorAll( ".js-inject-trailing-space" );
 
-  let innerTextElement;
+  for ( let i = 0; i < elementsToInjectTrailingSpace.length; i++ ) {
+    const that = elementsToInjectTrailingSpace[i];
+    that.innerHTML = convertBlankSpaceToTrailingSpacesElement( that.innerText.replace( "<!--", "&lt;!--" ) );
+    that.classList.remove( "js-inject-trailing-space" );
 
-  if ( isHTMLCodeElement && element.innerText.split( "\n" )[1] === "•" ) {
-    innerTextElement = element.innerText.split( "\n" )[3];
-  } else if ( element.nodeName === "H1" ) {
-    innerTextElement = element.innerText;
-  } else if ( isHTMLCodeElement && element.innerText.split( "\n" ).length > 1 ) {
-    innerTextElement = element.innerText.split( "\n" )[1];
-  } else {
-    innerTextElement = element.innerText;
-  }
-
-  element.setAttribute( "debuginfo", element.innerText.split( "\n" ).length );
-
-  const innerText = innerTextElement.replace( / /g, "<span class=\"html-space\"> <span>•</span></span>" );
-  element.innerHTML = innerText.replace( "<!--", "&lt;!--" );
-
-
-  if ( isHTMLCodeElement ) {
-    element.prepend( hoverBefore );
-    element.appendChild( hoverAfter );
-  }
-
-};
-
-const reconstructHTMLElementsWithTrailingSpaces = () => {
-  const fakeHTMLElements = document.querySelectorAll( ".html-code" );
-
-  for ( let i = 0; i < fakeHTMLElements.length; i++ ) {
-    injectTrailingSpaces( fakeHTMLElements[i] );
+    if ( that.classList.length === 0 ) {
+      that.removeAttribute( "class" );
+    }
   }
 };
 
@@ -275,8 +256,7 @@ const init = () => {
   createPromoBox( promoLoop[randomIntFromInterval( 0, promoLoop.length - 1 )] );
   consoleController();
   mobileHeightPortManager();
-  reconstructHTMLElementsWithTrailingSpaces();
-  injectTrailingSpaces( document.querySelector( ".html-comment" ) );
+  injectTrailingSpaces();
   fillsvg();
 };
 
