@@ -1,6 +1,6 @@
 {
   "name": "vkiss",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "",
   "main": "index.js",
   "author": {
@@ -40,6 +40,7 @@
     "html-webpack-plugin": "^4.5.1",
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
+    "raw-loader": "^4.0.2",
     "sass": "^1.32.0",
     "sass-loader": "^9.0.3",
     "style-loader": "^1.3.0",

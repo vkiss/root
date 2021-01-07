@@ -6,7 +6,6 @@ import "./style.scss";
 
 import footerNotes from "./footerNotes";
 import themes from "./themes";
-import logoOneDrive from "./assets/onedrive.svg";
 import logoPicPay from "./assets/picpay.svg";
 import logoUmbler from "./assets/umbler.svg";
 import logoXP from "./assets/xp.svg";
@@ -20,7 +19,7 @@ const addStyle = ( styleString ) => {
 
   const minifiedCustomCSS = styleString.replace( /\r?\n|\r|\t| /g, "" ).replace( /_/g, " " );
 
-  styleTagOnDOM.innerHTML = `${styleTagOnDOM.innerText} ${minifiedCustomCSS}`;
+  styleTagOnDOM.innerHTML = `${styleTagOnDOM.innerText}${minifiedCustomCSS}`;
 };
 
 const randomIntFromInterval = ( min, max ) => {
@@ -61,15 +60,6 @@ const createPromoLoop = () => {
       img: logoXP,
       text: "As melhores opções de investimentos do mercado. Abertura de conta sem custo. Na XP nenhum cliente é igual ao outro.",
       callout: "Abra sua conta"
-    },
-    {
-      hat: "AD",
-      title: "One Drive",
-      href: "https://onedrive.live.com?invref=5a5cb17e942df5f2&invscr=90",
-      target: "_blank",
-      img: logoOneDrive,
-      text: "Salve seus arquivos e fotos no OneDrive e acesse em qualquer dispositivo, de praticamente qualquer lugar.",
-      callout: "Crie sua conta e ganhe 0.5gb de armazenamento extra."
     }
   ];
 
@@ -96,14 +86,21 @@ const createPromoBox = ( promo ) => {
   promoBoxEl.innerHTML = `
     <header class="promo-box-header">${promo.hat}</header>
     <div class="promo-box-body">
-      <div ${( promo.imgSize ? `style="min-width: calc(${promo.imgSize}px + 1rem)"` : "" )} class="promo-box-media">
-        <img ${( promo.imgSize ? `style="max-width: ${promo.imgSize}px"` : "" )} src="${promo.img}" />
-      </div>
+      <figure ${( promo.imgSize ? `style="min-width: calc(${promo.imgSize}px + 1rem)"` : "" )} class="promo-box-media" data-max="${promo.imgSize}">
+        ${promo.img}
+      </figure>
       <div class="promo-box-ad">
         <p>${promo.text} <strong>${promo.callout}</strong></p>
       </div>
     </div>
   `;
+
+  addStyle( `
+    .promo-box-media_svg {
+      max-width: ${promo.imgSize ? promo.imgSize : "32"}px;
+      max-height: 50px;
+    }
+  ` );
 };
 
 const createFooterNotes = ( data, selectedColorPallete ) => {
@@ -172,6 +169,15 @@ const randomizeColorPalette = ( colorPalettes ) => {
   .html-comment {
     font-style: italic;
     color: ${randomPalette.colors[5]};
+  }
+
+  .promo-box-ad {
+    color: ${randomPalette.colors[7]};
+  }
+
+  .promo-box-media_svg_rect,
+  .promo-box-media_svg_path {
+    fill: ${randomPalette.colors[7]};
   }
 
   @media_screen_and_(max-width:_899px) {
@@ -245,6 +251,10 @@ const reconstructHTMLElementsWithTrailingSpaces = () => {
   }
 };
 
+const fillsvg = () => {
+
+};
+
 const init = () => {
   const promoLoop = createPromoLoop();
 
@@ -254,6 +264,7 @@ const init = () => {
   mobileHeightPortManager();
   reconstructHTMLElementsWithTrailingSpaces();
   injectTrailingSpaces( document.querySelector( ".html-comment" ) );
+  fillsvg();
 };
 
 init();

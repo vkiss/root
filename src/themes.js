@@ -18,12 +18,7 @@ const colorPalettes = [
     "link": "https://draculatheme.com/",
     "colors": [ "#f6f6f4", "#f67ec7", "#50ec77", "#f67ec7", "#e5ef8c", "#5f72a8", "#282a37", "#f6f6f4"]
   },
-  {
-    "colors": [ "#D4BE98", "#EA6962", "#D8A657", "#D4BE98", "#7DAEA3", "#928374", "#202020", "#E2CCAE"]
-  },
-  {
-    "colors": [ "#B3EEFF", "#69B7F7", "#8a65a0", "#B3EEFF", "#CBA3C7", "#797979", "#282C35", "#FFFFFF"]
-  }
 ];
+
 
 export default colorPalettes;
