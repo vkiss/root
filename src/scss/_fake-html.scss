@@ -1,7 +1,6 @@
 .html {
   &-code {
     position: relative;
-    color: #FFF;
 
     @at-root %hover-before-after {
       display: none;

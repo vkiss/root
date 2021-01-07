@@ -231,7 +231,20 @@ const injectTrailingSpaces = ( element ) => {
   const hoverBefore = element.querySelector( ".hover-before" );
   const hoverAfter = element.querySelector( ".hover-after" );
 
-  const innerTextElement = isHTMLCodeElement ? ( element.innerText.split( "\n" )[1] === "•" ? element.innerText.split( "\n" )[3] : element.innerText.split( "\n" )[1] ) : element.innerText;
+  let innerTextElement;
+
+  if ( isHTMLCodeElement && element.innerText.split( "\n" )[1] === "•" ) {
+    innerTextElement = element.innerText.split( "\n" )[3];
+  } else if ( element.nodeName === "H1" ) {
+    innerTextElement = element.innerText;
+  } else if ( isHTMLCodeElement && element.innerText.split( "\n" ).length > 1 ) {
+    innerTextElement = element.innerText.split( "\n" )[1];
+  } else {
+    innerTextElement = element.innerText;
+  }
+
+  element.setAttribute( "debuginfo", element.innerText.split( "\n" ).length );
+
   const innerText = innerTextElement.replace( / /g, "<span class=\"html-space\"> <span>•</span></span>" );
   element.innerHTML = innerText.replace( "<!--", "&lt;!--" );
 
