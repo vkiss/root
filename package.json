@@ -55,7 +55,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "node helpers/organizeEnvs prod && git add webpack.config.js && lint-staged"
     }
   },
   "lint-staged": {

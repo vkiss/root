@@ -6,17 +6,17 @@ const colorPalettes = [
   {
     "name": "one dark pro",
     "link": "https://github.com/Binaryify/OneDark-Pro",
-    "colors": [ "#aab2c0", "#EA6074", "#D9985E", "#aab2c0", "#8dc56f", "#7e848f", "#282c35", "#aab2c0"]
+    "colors": [ "#AAB2C0", "#EA6074", "#D9985E", "#AAB2C0", "#8DC56F", "#7E848F", "#282C35", "#AAB2C0"]
   },
   {
     "name": "dracula",
     "link": "https://draculatheme.com/",
-    "colors": [ "#f8f8f2", "#f56cca", "#56ff68", "#f56cca", "#eefc7a", "#5f72a8", "#21242B", "#f8f8f2"]
+    "colors": [ "#F8F8F2", "#F56CCA", "#56FF68", "#F56CCA", "#EEFC7A", "#5F72A8", "#21242B", "#F8F8F2"]
   },
   {
     "name": "dracula soft",
     "link": "https://draculatheme.com/",
-    "colors": [ "#f6f6f4", "#f67ec7", "#50ec77", "#f67ec7", "#e5ef8c", "#5f72a8", "#282a37", "#f6f6f4"]
+    "colors": [ "#F6F6F4", "#F67EC7", "#50EC77", "#F67EC7", "#E5EF8C", "#5F72A8", "#282A37", "#F6F6F4"]
   },
 ];
 
