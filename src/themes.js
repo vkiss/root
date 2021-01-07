@@ -1,5 +1,5 @@
 const colorPalettes = [
-  /* [ brackets, html_element, html_attribute, html_equalsign, html_key, html_comment, site_bg, pain_text ] */
+  /* [ brackets, html_element, html_attribute, html_equalsign, html_key, html_comment, site_bg, plain_text ] */
   {
     "colors": [ "#FFFFFF", "#EA6074", "#FFB56F", "#FFFFFF", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF"]
   },
@@ -18,7 +18,11 @@ const colorPalettes = [
     "link": "https://draculatheme.com/",
     "colors": [ "#F6F6F4", "#F67EC7", "#50EC77", "#F67EC7", "#E5EF8C", "#5F72A8", "#282A37", "#F6F6F4"]
   },
+  {
+    "name": "noctis",
+    "link": "https://github.com/liviuschera/noctis",
+    "colors": [ "#50868C", "#F45B1C", "#DF9500", "#ADCBCD", "#51ED9F", "#50868C", "#07262A", "#ADCBCD"]
+  },
 ];
-
 
 export default colorPalettes;
