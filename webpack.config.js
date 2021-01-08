@@ -88,7 +88,8 @@ module.exports = {
     new HtmlWebpackInlineSourcePlugin( HtmlWebpackPlugin ),
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin( {
-      VERSION: JSON.stringify( require( "./package.json" ).version )
+      VERSION: JSON.stringify( require( "./package.json" ).version ),
+      UMBLERREF: JSON.stringify( "https://www.umbler.com/br/seja-bem-vindo?a=7kly6v4e" )
     } ),
     new CopyPlugin( {
       patterns: [

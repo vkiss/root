@@ -17,8 +17,11 @@ export function createFooterNotes ( selectedColorPallete ) {
     document.getElementById( "footer-notes" ).appendChild( palleteItemP );
   }
 
-  const sourceCodeLine = document.createElement( "P" );
-  sourceCodeLine.innerHTML = `v${VERSION} | <a target="_blank" href="https://github.com/vkiss/root">source code</a>`;
+  const hostedByLine = document.createElement( "P" );
+  hostedByLine.innerHTML = convertBlankSpaceToTrailingSpacesElement( `.hosted#by#<a target=\"_blank\" href=\"${UMBLERREF}\">umbler</a>`, "\#" );
+  document.getElementById( "footer-notes" ).appendChild( hostedByLine );
 
+  const sourceCodeLine = document.createElement( "P" );
+  sourceCodeLine.innerHTML = convertBlankSpaceToTrailingSpacesElement( `.v${VERSION}#|#<a target="_blank" href="https://github.com/vkiss/root">source#code</a>`, "\#" );
   document.getElementById( "footer-notes" ).appendChild( sourceCodeLine );
 };

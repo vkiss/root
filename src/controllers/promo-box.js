@@ -19,7 +19,7 @@ export function createPromoLoop () {
       hat: "AD",
       title: "Umbler",
       matter: 3,
-      href: "https://www.umbler.com/br/seja-bem-vindo?a=7kly6v4e",
+      href: UMBLERREF,
       target: "_blank",
       img: logoUmbler,
       imgSize: 50,
