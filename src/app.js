@@ -17,7 +17,7 @@ import logoXP from "./assets/xp.svg";
 const addStyle = ( styleString ) => {
   const styleTagOnDOM = document.querySelector( "style" );
 
-  const minifiedCustomCSS = styleString.replace( /\r?\n|\r|\t| /g, "" ).replace( /_/g, " " );
+  const minifiedCustomCSS = styleString.replace( /\r?\n|\r|\t| /g, "" ).replace( /\$/g, " " );
 
   styleTagOnDOM.innerHTML = `${styleTagOnDOM.innerText}${minifiedCustomCSS}`;
 };
@@ -101,7 +101,7 @@ const createPromoBox = ( promo ) => {
   `;
 
   addStyle( `
-    .promo-box-media_svg {
+    .promo-box-media$svg {
       max-width: ${promo.imgSize ? promo.imgSize : "32"}px;
       max-height: 50px;
     }
@@ -179,12 +179,12 @@ const randomizeColorPalette = ( randomPalette ) => {
     color: ${randomPalette.colors[7]};
   }
 
-  .promo-box-media_svg_rect,
-  .promo-box-media_svg_path {
+  .promo-box-media$svg$rect,
+  .promo-box-media$svg$path {
     fill: ${randomPalette.colors[7]};
   }
 
-  @media_screen_and_(max-width:_899px) {
+  @media$screen$and$(max-width:$899px) {
     a {
       color: ${randomPalette.colors[7]};
     }
@@ -194,7 +194,7 @@ const randomizeColorPalette = ( randomPalette ) => {
     }
   }
 
-  @media_screen_and_(min-width:_900px) {
+  @media$screen$and$(min-width:$900px) {
     aside {
       color: ${randomPalette.colors[5]};
     }
@@ -215,11 +215,11 @@ const randomizeColorPalette = ( randomPalette ) => {
       background-color: ${randomPalette.colors[7]};
     }
 
-    aside_a:not(.promo-box) {
+    aside$a:not(.promo-box) {
       color: ${randomPalette.colors[5]}
     }
 
-    aside_a:not(.promo-box):hover {
+    aside$a:not(.promo-box):hover {
       color: ${randomPalette.colors[6]};
       border-bottom-color: ${randomPalette.colors[5]};
       background-color: ${randomPalette.colors[5]};

@@ -1,6 +1,6 @@
 {
   "name": "vkiss",
-  "version": "3.3.5",
+  "version": "3.3.6",
   "description": "",
   "main": "index.js",
   "author": {
@@ -12,7 +12,7 @@
     "start": "npm run dev",
     "dev": "node app/organizeEnvs dev && webpack-dev-server --mode development --hot --inline",
     "build": "node app/organizeEnvs prod && webpack --mode production",
-    "deploy": "npm run build && node app/deploy"
+    "deploy": "npm run build && node app/prepareForProduction && node app/deploy"
   },
   "homepage": "https://github.com/vkiss/root#readme",
   "repository": {
@@ -40,7 +40,6 @@
     "html-webpack-plugin": "^4.5.1",
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
-    "posthtml-minify-classnames": "^0.2.3",
     "raw-loader": "^4.0.2",
     "sass": "^1.32.0",
     "sass-loader": "^9.0.3",
