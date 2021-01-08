@@ -95,7 +95,7 @@ const createPromoBox = ( promo ) => {
         ${promo.img}
       </figure>
       <div class="promo-box-ad">
-        <p>${convertBlankSpaceToTrailingSpacesElement( promo.text )} <strong>${convertBlankSpaceToTrailingSpacesElement( promo.callout )}</strong></p>
+        <p>${convertBlankSpaceToTrailingSpacesElement( promo.text )}<span class=\"html-space\"> <span>•</span></span><strong>${convertBlankSpaceToTrailingSpacesElement( promo.callout )}</strong></p>
       </div>
     </div>
   `;
