@@ -4,11 +4,13 @@ import "./style.scss";
  * Imports
  */
 
-import footerNotes from "./footerNotes";
-import themes from "./themes";
 import logoPicPay from "./assets/picpay.svg";
 import logoUmbler from "./assets/umbler.svg";
 import logoXP from "./assets/xp.svg";
+
+
+const footerNotes = require( "./data/footer_notes.json" );
+const themes = require( "./data/themes.json" );
 
 /**
  * Utils
@@ -110,18 +112,23 @@ const createPromoBox = ( promo ) => {
 
 const createFooterNotes = ( data, selectedColorPallete ) => {
   for ( let i = 0; i < data.length; i++ ) {
-    if ( data.length - 1 === i && selectedColorPallete.name ) {
-      const palleteItemP = document.createElement( "P" );
-      palleteItemP.innerHTML = `${convertBlankSpaceToTrailingSpacesElement( ".html syntax style based on " )}${( selectedColorPallete.link ? `<a target=\"_blank\" href="${selectedColorPallete.link}">` : "" )}${convertBlankSpaceToTrailingSpacesElement( selectedColorPallete.name )}${( selectedColorPallete.link ? "</a>" : "" )}${convertBlankSpaceToTrailingSpacesElement( "'s color palette" )}`;
-
-      document.getElementById( "footer-notes" ).appendChild( palleteItemP );
-    }
-
     const thisPElement = document.createElement( "P" );
     thisPElement.innerHTML = `.${convertBlankSpaceToTrailingSpacesElement( data[i], "\#" )}`;
 
     document.getElementById( "footer-notes" ).appendChild( thisPElement );
   }
+
+  if ( selectedColorPallete.name ) {
+    const palleteItemP = document.createElement( "P" );
+    palleteItemP.innerHTML = `${convertBlankSpaceToTrailingSpacesElement( ".html syntax style based on " )}${( selectedColorPallete.link ? `<a target=\"_blank\" href="${selectedColorPallete.link}">` : "" )}${convertBlankSpaceToTrailingSpacesElement( selectedColorPallete.name )}${( selectedColorPallete.link ? "</a>" : "" )}${convertBlankSpaceToTrailingSpacesElement( "'s color palette" )}`;
+
+    document.getElementById( "footer-notes" ).appendChild( palleteItemP );
+  }
+
+  const sourceCodeLine = document.createElement( "P" );
+  sourceCodeLine.innerHTML = `v${VERSION} | <a target="_blank" href="https://github.com/vkiss/root">source code</a>`;
+
+  document.getElementById( "footer-notes" ).appendChild( sourceCodeLine );
 };
 
 const mobileHeightPortManager = () => {
@@ -242,10 +249,6 @@ const injectTrailingSpaces = () => {
       that.removeAttribute( "class" );
     }
   }
-};
-
-const fillsvg = () => {
-
 };
 
 const init = () => {

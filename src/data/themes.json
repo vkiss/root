@@ -1,7 +1,7 @@
-const colorPalettes = [
-  /* [ brackets, html_element, html_attribute, html_equalsign, html_key, html_comment, site_bg, plain_text ] */
+[
   {
-    "colors": [ "#FFFFFF", "#EA6074", "#FFB56F", "#FFFFFF", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF"]
+    "colors": [ "#FFFFFF", "#EA6074", "#FFB56F", "#FFFFFF", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF"],
+    "description": [ "brackets", "html_element", "html_attribute", "html_equalsign", "html_key", "html_comment", "site_bg", "plain_text" ]
   },
   {
     "name": "one dark pro",
@@ -22,7 +22,5 @@ const colorPalettes = [
     "name": "noctis",
     "link": "https://github.com/liviuschera/noctis",
     "colors": [ "#50868C", "#F45B1C", "#DF9500", "#ADCBCD", "#51ED9F", "#50868C", "#07262A", "#ADCBCD"]
-  },
-];
-
-export default colorPalettes;
+  }
+]

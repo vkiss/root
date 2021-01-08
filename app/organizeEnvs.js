@@ -51,10 +51,10 @@ fs.readFile( webpackFile, "utf8", function ( err,data ) {
 
   if ( cliArgs.includes( "dev" ) ) {
     result = data.replace( /^( |)+new HtmlWebpackInlineSourcePlugin\( HtmlWebpackPlugin \),/m, "    // new HtmlWebpackInlineSourcePlugin( HtmlWebpackPlugin )," );
-    info( chalk.green( "> Applied local enviroment settings to webpack" ) );
+    info( chalk.gray( "Webpack Settings changed to ->" ) + chalk.black.bgGreen( ":: LOCAL ::" ) );
   } else if ( cliArgs.includes( "prod" ) ) {
     result = data.replace( /( |)+\/\/ new HtmlWebpackInlineSourcePlugin\( HtmlWebpackPlugin \),/m, "    new HtmlWebpackInlineSourcePlugin( HtmlWebpackPlugin )," );
-    info( chalk.green( "> Applied production enviroment settings to webpack" ) );
+    info( chalk.gray( "Webpack Settings changed to " ) + chalk.black.bgGreen( ":: PRODUCTION ::" ) );
   } else {
     info( chalk.red( "Go home, you're drunk" ) );
   }
