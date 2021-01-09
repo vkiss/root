@@ -15,6 +15,7 @@ import { consoleController } from "./controllers/console";
 import { createPromoLoop, createPromoBox } from "./controllers/promo-box";
 import { randomizeColorPalette, injectTrailingSpaces } from "./controllers/dom-theme";
 import { createFooterNotes } from "./controllers/footer-notes";
+import { rightClickMenu } from "./controllers/right-click-menu";
 
 // Import :: Data
 const themes = require( "./data/themes.json" );
@@ -32,6 +33,7 @@ const init = () => {
   createPromoBox( promoLoop[randomIntFromInterval( 0, promoLoop.length - 1 )] );
   consoleController( randomPalette );
   injectTrailingSpaces();
+  rightClickMenu( randomPalette );
   watchVh();
 };
 
