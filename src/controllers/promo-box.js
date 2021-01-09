@@ -1,8 +1,8 @@
 import { addStyle, convertBlankSpaceToTrailingSpacesElement } from "../utils";
 
-import logoPicPay from "../assets/picpay.svg";
-import logoUmbler from "../assets/umbler.svg";
-import logoXP from "../assets/xp.svg";
+import logoPicPay from "../assets/logos/picpay.svg";
+import logoUmbler from "../assets/logos/umbler.svg";
+import logoXP from "../assets/logos/xp.svg";
 
 export function createPromoLoop () {
   const promos = [

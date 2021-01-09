@@ -8,6 +8,7 @@
   display: flex;
   box-sizing: content-box;
   align-items: center;
+  justify-content: space-evenly;
   padding: 3px 0;
   border: 0;
   color: #FFF;
@@ -25,11 +26,12 @@
   @extend %context-menu-shared-settings;
 
   $offset: 6px;
+  $menu_width: 250px;
+  $icon_size: 21px;
 
   position: absolute;
   display: none;
-  min-width: 200px;
-  max-width: 200px;
+  width: $menu_width;
   padding: $offset;
 
   &-primary-item {
@@ -42,12 +44,19 @@
     display: block;
   }
 
+  &-hr {
+    width: 100%;
+    height: 1px;
+    margin: 4px 0;
+    background-color: #2F2F2F;
+  }
+
   &-sub-menu {
     @extend %context-menu-shared-settings;
 
     position: absolute;
     top: -5px;
-    left: 100%;
+    left: calc(100% + 6px);
     display: none;
     width: 100%;
     padding: ($offset / 2) $offset;
@@ -66,24 +75,62 @@
   }
 
   &-label {
+    flex-grow: 1;
     margin-left: $offset / 2;
   }
 
-  &-icon {
+  @at-root %svg-container {
     display: flex;
-    width: 21px;
     align-items: center;
+  }
+
+  &-icon {
+    @extend %svg-container;
+
+    width: $icon_size;
     margin-right: $offset;
     margin-left: $offset / 2;
 
     svg {
-      width: 21px;
-      height: 21px;
+      width: $icon_size;
+      height: $icon_size;
+
+      path[fill="transparent"] {
+        fill: transparent;
+      }
     }
 
-    rect,
-    path {
-      fill: #FFF;
+    @include paint-svg(#FFF);
+  }
+
+  // Indicators
+
+  &-has-sub-menu-arrow {
+    $arrow-size: 5px;
+
+    width: 0;
+    height: 0;
+    border-top: $arrow-size solid transparent;
+    border-bottom: $arrow-size solid transparent;
+    border-left: $arrow-size solid #FFF;
+    margin-right: $offset;
+    opacity: .125;
+
+    .--left & {
+      order: -1;
+      border-right: $arrow-size solid #FFF;
+      border-left: 0;
     }
+  }
+
+  &-link-sign {
+    @extend %svg-container;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    @include paint-svg(#FFF);
   }
 }

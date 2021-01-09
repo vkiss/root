@@ -62,3 +62,10 @@
     @content;
   }
 }
+
+@mixin paint-svg($color) {
+  rect,
+  path {
+    fill: $color;
+  }
+}
