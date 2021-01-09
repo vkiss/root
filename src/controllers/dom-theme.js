@@ -69,26 +69,44 @@ export function randomizeColorPalette ( randomPalette ) {
       color: ${differLinkColor};
     }
 
-    a:not(.promo-box):hover {
+    a.link:hover {
       border-bottom-color: ${differLinkColor};
       background-color: ${differLinkColor};
       color: ${randomPalette.colors[6]};
     }
 
-    a.html-code:hover { 
+    .--context-menu-open$a.link:hover {
+      border-bottom-color: inherit;
+      background-color: inherit;
+      color: ${differLinkColor};
+    }
+
+    a.html-code:hover {
       color: ${randomPalette.colors[6]};
       border-bottom-color: ${randomPalette.colors[7]};
       background-color: ${randomPalette.colors[7]};
     }
 
-    aside$a:not(.promo-box) {
+    .--context-menu-open$a.html-code:hover {
+      color: inherit;
+      border-bottom-color: inherit;
+      background-color: inherit;
+    }
+
+    aside$a {
       color: ${randomPalette.colors[5]}
     }
 
-    aside$a:not(.promo-box):hover {
+    aside$a:hover {
       color: ${randomPalette.colors[6]};
       border-bottom-color: ${randomPalette.colors[5]};
       background-color: ${randomPalette.colors[5]};
+    }
+
+    .--context-menu-open$aside$a:hover {
+      color: inherit;
+      border-bottom-color: inherit;
+      background-color: inherit;
     }
   }
   ` );

@@ -11,6 +11,11 @@ $promo-box-border: 1px solid rgba(255, 255, 255, .1);
     box-shadow: .4rem .4rem 0 rgba(255, 255, 255, .15);
     text-decoration: none;
     transform: translate(-.4rem, -.4rem);
+
+    .--context-menu-open & {
+      box-shadow: none;
+      transform: none;
+    }
   }
 
   @include mobile {

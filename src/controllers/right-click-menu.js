@@ -1,8 +1,9 @@
-import { addStyle } from "../utils";
-
 /**
  * Data
  */
+
+import telegramSuperior from "../assets/telegram.svg";
+import zipZopLogo from "../assets/zipzop.svg";
 
 let contextMenu = document.querySelector( ".context-menu" );
 contextMenu = document.createElement( "DIV" );
@@ -20,21 +21,25 @@ const contextMenuItens = [
     ]
   },
   {
-    "title": "view last projects",
+    "title": "portolio",
     "itens": [
       {
-        "label": "sophialis",
+        "label": "sophialis.com",
         "link": "https://www.sophialis.com/"
       },
       {
         "label": "tocadopavao.com.br",
         "link": "https://tocadopavao.com.br/"
+      },
+      {
+        "label": "fgc.org.br",
+        "link": "https://www.fgc.org.br/"
       }
     ]
   },
   {
-    "title": "hospede seu projeto na umbler",
-    "link": UMBLERREF
+    "title": "exibir código fonte",
+    "link": "https://github.com/vkiss/root"
   }
 ];
 
@@ -57,7 +62,17 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
     const item = document.createElement( that.link ? "A" : "DIV" );
     item.className = "context-menu-primary-item";
 
-    item.appendChild( document.createTextNode( that.title ) );
+    if ( that.icon ) {
+      const iconContainer = document.createElement( "SPAN" );
+      iconContainer.className = "context-menu-icon";
+      iconContainer.innerHTML = that.icon;
+      item.appendChild( iconContainer );
+    }
+
+    const textContainer = document.createElement( "SPAN" );
+    textContainer.className = "context-menu-label";
+    textContainer.appendChild( document.createTextNode( that.title ) );
+    item.appendChild( textContainer );
 
     if ( that.link ) {
       item.setAttribute( "href", that.link );
@@ -74,7 +89,12 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
         const subItem = document.createElement( "A" );
         subItem.className = "context-menu-secondary-item";
         subItem.setAttribute( "href", that.itens[x].link );
-        subItem.appendChild( document.createTextNode( that.itens[x].label ) );
+
+        const subItemTextContainer = document.createElement( "SPAN" );
+        subItemTextContainer.className = "context-menu-label";
+        subItemTextContainer.appendChild( document.createTextNode( that.itens[x].label ) );
+        subItem.appendChild( subItemTextContainer );
+
         subItem.setAttribute( "target", "_blank" );
         subItem.setAttribute( "rel", "noopener noreferrer" );
         subItem.style.cursor = "pointer";
@@ -93,21 +113,54 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
   }
 };
 
-export function rightClickMenu ( themePallete ) {
-  addStyle( `
-  .context-menu-primary-item:hover {
-    background-color: ${themePallete.colors[1]}
-  }
-  ` );
+export function rightClickMenu ( themePallete, randomPromo ) {
+  // addStyle( `
+  // .context-menu-primary-item:hover {
+  //   background-color: ${themePallete.colors[1]}
+  // }
+  // .context-menu-secondary-item:hover {
+  //   background-color: ${themePallete.colors[2]}
+  // }
+  // ` );
 
   window.addEventListener( "contextmenu", ( event ) => {
     event.preventDefault();
+
+    document.body.classList.add( "--context-menu-open" );
 
     if ( event.target.nodeName === "A" ) {
       createContextMenu( [
         {
           "title": "abrir item em uma nova janela",
           "link": event.target.getAttribute( "href" )
+        }
+      ] );
+    } else if ( event.path.includes( document.getElementById( "email-link-desktop" ) ) ) {
+      createContextMenu( [
+        {
+          "title": "escrever um e-mail",
+          "link": document.getElementById( "email-link-desktop" ).getAttribute( "href" )
+        }
+      ] );
+    } else if ( event.path.includes( document.getElementById( "phone-link-desktop" ) ) ) {
+      createContextMenu( [
+        {
+          "icon": zipZopLogo,
+          "title": "abrir conversa no whatsapp",
+          "link": `${document.getElementById( "phone-link-desktop" ).getAttribute( "href" )}`
+        },
+        {
+          "icon": telegramSuperior,
+          "title": "abrir conversa no telegram",
+          "link": "https://t.me/vinik"
+        }
+      ] );
+    } else if ( event.path.includes( document.getElementById( "promo-box" ) ) ) {
+      createContextMenu( [
+        {
+          "icon": randomPromo.img,
+          "title": `ir para ${randomPromo.title.toLowerCase()}`,
+          "link": randomPromo.href
         }
       ] );
     } else {
@@ -137,6 +190,13 @@ export function rightClickMenu ( themePallete ) {
   } );
 
   window.addEventListener( "click", ( event ) => {
-    closeMenu();
+    if ( document.body.classList.contains( "--context-menu-open" ) ) {
+      closeMenu();
+      document.body.classList.remove( "--context-menu-open" );
+
+      if ( document.body.classList.length === 0 ) {
+        document.body.removeAttribute( "class" );
+      }
+    }
   } );
 }

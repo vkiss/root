@@ -1,29 +1,36 @@
 %context-menu-shared-settings {
   z-index: $zi_context_menu;
-  padding: 5px 0;
   background-color: #262626;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
 }
 
 %context-menu-items-shared {
-  display: block;
-  padding: 10px;
+  display: flex;
+  box-sizing: content-box;
+  align-items: center;
+  padding: 3px 0;
   border: 0;
   color: #FFF;
   cursor: default;
   font-size: 12px;
   line-height: 1.5;
   text-decoration: none;
+
+  &:hover {
+    background-color: #2E2E2E;
+  }
 }
 
 .context-menu {
   @extend %context-menu-shared-settings;
 
+  $offset: 6px;
+
   position: absolute;
   display: none;
   min-width: 200px;
   max-width: 200px;
-  padding: 10px;
+  padding: $offset;
 
   &-primary-item {
     @extend %context-menu-items-shared;
@@ -43,6 +50,7 @@
     left: 100%;
     display: none;
     width: 100%;
+    padding: ($offset / 2) $offset;
 
     .--left & {
       left: -100%;
@@ -55,5 +63,27 @@
 
   &-secondary-item {
     @extend %context-menu-items-shared;
+  }
+
+  &-label {
+    margin-left: $offset / 2;
+  }
+
+  &-icon {
+    display: flex;
+    width: 21px;
+    align-items: center;
+    margin-right: $offset;
+    margin-left: $offset / 2;
+
+    svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    rect,
+    path {
+      fill: #FFF;
+    }
   }
 }

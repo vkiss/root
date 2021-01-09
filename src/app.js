@@ -26,14 +26,15 @@ const themes = require( "./data/themes.json" );
 
 const init = () => {
   const promoLoop = createPromoLoop();
+  const randomPromo = promoLoop[randomIntFromInterval( 0, promoLoop.length - 1 )];
   const randomPalette = themes[randomIntFromInterval( 0, themes.length - 1 )];
 
   randomizeColorPalette( randomPalette );
   createFooterNotes( randomPalette );
-  createPromoBox( promoLoop[randomIntFromInterval( 0, promoLoop.length - 1 )] );
+  createPromoBox( randomPromo );
   consoleController( randomPalette );
   injectTrailingSpaces();
-  rightClickMenu( randomPalette );
+  rightClickMenu( randomPalette, randomPromo );
   watchVh();
 };
 
