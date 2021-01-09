@@ -65,6 +65,8 @@
 
 @mixin paint-svg($color) {
   rect,
+  ellipse,
+  circle,
   path {
     fill: $color;
   }

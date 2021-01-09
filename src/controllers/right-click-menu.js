@@ -9,6 +9,8 @@ import zipZopLogo from "../assets/logos/zipzop.svg";
 import logoXP from "../assets/logos/xp.svg";
 import githubLogo from "../assets/logos/github.svg";
 import npmLogo from "../assets/logos/npm.svg";
+import parajegas from "../assets/logos/parajegas.svg";
+import sophialis from "../assets/logos/sophialis.svg";
 
 import emailIcon from "../assets/icons/email.svg";
 import linkBlank from "../assets/icons/external-link.svg";
@@ -30,7 +32,8 @@ const contextMenuItens = [
     "icon_adjust": 2,
     "itens": [
       {
-        "icon": linkBlank,
+        "icon": npmLogo,
+        "icon_adjust": 2,
         "label": "vh-watch",
         "link": "https://www.npmjs.com/package/vh-watch"
       }
@@ -43,19 +46,20 @@ const contextMenuItens = [
     "itens": [
       {
         "icon": linkBlank,
-        "label": "sophialis.com",
-        "link": "https://www.sophialis.com/"
+        "label": "fgc.org.br",
+        "link": "https://www.fgc.org.br/"
       },
       {
-        "icon": linkBlank,
+        "icon": parajegas,
         "label": "tocadopavao.com.br",
         "link": "https://tocadopavao.com.br/"
       },
       {
-        "icon": linkBlank,
-        "label": "fgc.org.br",
-        "link": "https://www.fgc.org.br/"
-      }
+        "icon": sophialis,
+        "icon_adjust": 1,
+        "label": "sophialis.com",
+        "link": "https://www.sophialis.com/"
+      },
     ]
   },
   {
@@ -241,7 +245,7 @@ export function rightClickMenu ( themePallete, randomPromo ) {
       const elementRect = contextMenu.getBoundingClientRect();
 
       const leftPos = event.clientX - ( window.innerWidth - event.clientX < elementRect.width ? elementRect.width + 4 : 4 );
-      const topPos = event.clientY - ( window.innerHeight - event.clientY < elementRect.width ? elementRect.height + 4 : 4 );
+      const topPos = event.clientY - ( window.innerHeight - event.clientY < elementRect.height ? elementRect.height + 4 : 4 );
 
       if ( window.innerWidth - event.clientX < elementRect.width * 2 ) {
         contextMenu.classList.add( "--left" );
@@ -249,15 +253,23 @@ export function rightClickMenu ( themePallete, randomPromo ) {
         contextMenu.classList.remove( "--left" );
       }
 
+      if ( window.innerHeight - event.clientY < elementRect.height ) {
+        contextMenu.classList.add( "--bottom" );
+      } else {
+        contextMenu.classList.remove( "--bottom" );
+      }
+
       contextMenu.style.left = `${leftPos}px`;
       contextMenu.style.top = `${topPos}px`;
     }
-    event.preventDefault();
   } );
 
   window.addEventListener( "click", ( event ) => {
     if ( document.body.classList.contains( "--context-menu-open" ) ) {
-      event.preventDefault();
+      if ( !event.path.includes( contextMenu ) ) {
+        event.preventDefault();
+      }
+
       closeMenu();
       document.body.classList.remove( "--context-menu-open" );
 
