@@ -230,6 +230,14 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
           "icon": telegramSuperior,
           "title": "abrir conversa no telegram",
           "link": "https://t.me/vinik"
+        },
+        {
+          "hr": true
+        },
+        {
+          "icon": copyIcon,
+          "title": "copiar telefone",
+          "copy": "(11) 985750139"
         }
       ] );
     } else if ( event.path.includes( document.getElementById( "promo-box" ) ) ) {
