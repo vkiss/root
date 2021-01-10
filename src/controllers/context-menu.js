@@ -2,7 +2,7 @@
  * Imports
  */
 
-// import { addStyle } from "../utils";
+import { copyToClipboard } from "../utils";
 
 import telegramSuperior from "../assets/logos/telegram.svg";
 import zipZopLogo from "../assets/logos/zipzop.svg";
@@ -15,6 +15,7 @@ import sophialis from "../assets/logos/sophialis.svg";
 import emailIcon from "../assets/icons/email.svg";
 import linkBlank from "../assets/icons/external-link.svg";
 import portfolioLogo from "../assets/icons/code.svg";
+import copyIcon from "../assets/icons/copy.svg";
 
 /**
  * Data
@@ -127,6 +128,12 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
       item.style.cursor = "pointer";
     }
 
+    if ( that.copy ) {
+      item.addEventListener( "click", () => {
+        copyToClipboard( that.copy );
+      } );
+    }
+
     if ( that.itens ) {
       const subMenu = document.createElement( "DIV" );
       subMenu.className = "context-menu-sub-menu";
@@ -175,7 +182,7 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
   }
 };
 
-export function rightClickMenu ( themePallete, randomPromo ) {
+export default function rightClickMenu ( themePallete, randomPromo ) {
   // addStyle( `
   // .context-menu-primary-item:hover {
   //   background-color: ${themePallete.colors[1]}
@@ -201,6 +208,14 @@ export function rightClickMenu ( themePallete, randomPromo ) {
           "icon": logoXP,
           "title": "temos vagas para front end",
           "link": "mailto:vinicius.kiss@xpi.com.br?subject=Interesse na vaga de Front end"
+        },
+        {
+          "hr": true
+        },
+        {
+          "icon": copyIcon,
+          "title": "copiar endereço de e-mail",
+          "copy": "contato@vkiss.com.br"
         }
       ] );
     } else if ( event.path.includes( document.getElementById( "phone-link-desktop" ) ) ) {
