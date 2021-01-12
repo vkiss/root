@@ -1,6 +1,6 @@
 [
   {
-    "colors": [ "#FFFFFF", "#EA6074", "#FFB56F", "#FFFFFF", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF"],
+    "colors": [ "#FFFFFF", "#EA6074", "#FFB56F", "#9DD48E", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF"],
     "description": [ "brackets", "html_element", "html_attribute", "html_equalsign", "html_key", "html_comment", "site_bg", "plain_text" ]
   },
   {
