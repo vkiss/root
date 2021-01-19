@@ -54,7 +54,19 @@ fs.readFile( indexFile, "utf8", function ( err, data ) {
     return info( chalk.red( err ) );
   }
 
-  const allClasses = uniqueArray( data.match( /((\.|\#){1}([a-z]|[A-Z]|-|_){1,})(?={|\$|( ({|strong|\.|\,)))/g ) ).sort( ( a, b ) => { return b.length - a.length; } );
+  const aditionalClassesAndIds = [
+    "#email-link-desktop",
+    "#phone-link-desktop"
+  ];
+
+  const allClassesFromIndex = uniqueArray( data.match( /((\.|\#){1}([a-z]|[A-Z]|-|_){1,})(?={|\$|( ({|strong|\.|\,)))/g ) );
+
+  for ( let i = 0; i < aditionalClassesAndIds.length; i++ ) {
+    allClassesFromIndex.push( aditionalClassesAndIds[i] );
+  }
+
+  const allClasses = allClassesFromIndex.sort( ( a, b ) => { return b.length - a.length; } );
+
   const randomIDs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split( "" );
 
   if ( allClasses.length > randomIDs.length ) {
