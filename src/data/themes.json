@@ -4,6 +4,11 @@
     "description": [ "brackets", "html_element", "html_attribute", "html_equalsign", "html_key", "html_comment", "site_bg", "plain_text" ]
   },
   {
+    "name": "monokai.pro",
+    "link": "https://monokai.pro/",
+    "colors": [ "#939297", "#F45188", "#52DFEA", "#939293", "#FAD84D", "#727072", "#2E2A2F", "#FCFCFA"]
+  },
+  {
     "name": "one dark pro",
     "link": "https://github.com/Binaryify/OneDark-Pro",
     "colors": [ "#AAB2C0", "#EA6074", "#D9985E", "#AAB2C0", "#8DC56F", "#7E848F", "#282C35", "#AAB2C0"]
