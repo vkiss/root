@@ -77,8 +77,8 @@ module.exports = {
       },
       meta: {
         viewport: "width=device-width,minimum-scale=1",
-        description: "Escrevo códigos para deixar sites bonitos.",
-        robots: "index, follow"
+        description: "Escrevo códigos que deixam sites bonitos.",
+        robots: "noodp,noydir"
       },
       minify: {
         removeComments: true,
