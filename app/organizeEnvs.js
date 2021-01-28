@@ -51,12 +51,12 @@ fs.readFile( webpackFile, "utf8", function ( err,data ) {
 
   if ( cliArgs.includes( "dev" ) ) {
     result = data.replace( /^( |)+new HtmlWebpackInlineSourcePlugin\( HtmlWebpackPlugin \),/m, "    // new HtmlWebpackInlineSourcePlugin( HtmlWebpackPlugin )," );
-    info( chalk.gray( "Webpack Settings changed to " ) + chalk.black.bgGreen( ":: LOCAL ::" ) );
+    info( chalk.gray( "> webpack settings changed to " ) + chalk.black.bgGreen( ":: local ::" ) );
   } else if ( cliArgs.includes( "prod" ) ) {
     result = data.replace( /( |)+\/\/ new HtmlWebpackInlineSourcePlugin\( HtmlWebpackPlugin \),/m, "    new HtmlWebpackInlineSourcePlugin( HtmlWebpackPlugin )," );
-    info( chalk.gray( "Webpack Settings changed to " ) + chalk.black.bgGreen( ":: PRODUCTION ::" ) );
+    info( chalk.gray( "> webpack settings changed to " ) + chalk.black.bgGreen( ":: production ::" ) );
   } else {
-    info( chalk.red( "Go home, you're drunk" ) );
+    info( chalk.red( "> go home, you're drunk" ) );
   }
 
 

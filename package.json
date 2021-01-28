@@ -57,7 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "node app/organizeEnvs prod && git add webpack.config.js && lint-staged"
+      "pre-commit": "npm run build && node app/readmeUpdater && git add README.md && git add webpack.config.js && lint-staged"
     }
   },
   "lint-staged": {
