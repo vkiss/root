@@ -1,7 +1,9 @@
 [
   {
-    "colors": [ "#FFFFFF", "#EA6074", "#FFB56F", "#9DD48E", "#9DD48E", "#7F848E", "#21242B", "#FFFFFF"],
-    "description": [ "brackets", "html_element", "html_attribute", "html_equalsign", "html_key", "html_comment", "site_bg", "plain_text" ]
+    "_cheat": [ "brackets", "html_element", "html_attribute", "html_equalsign", "html_value", "html_comment", "site_bg", "plain_text" ],
+    "name": "horizon",
+    "link": "https://marketplace.visualstudio.com/items?itemName=jolaleye.horizon-theme-vscode",
+    "colors": [ "#B93B5E", "#E5446F", "#E78376", "#BBBBBB", "#EDA586", "#4C4D54", "#1C1E28", "#BBBBBB"]
   },
   {
     "name": "monokai.pro",
