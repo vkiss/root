@@ -1,6 +1,7 @@
 /*
   reset file
     based on [normalize.css v5.0](github.com/necolas/normalize.css)
+    with a few modifications
  */
 
 * {
@@ -30,74 +31,72 @@ aside,
 footer,
 header,
 nav,
-section {
-  display: block;
-}
+section { display: block; }
 
 /**
- * Body config
+  1. 100vh solution to eliminate mobile discrepancy (with fallback)
+    - based on this article: https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+    - implemented using vh-watch (https://www.npmjs.com/package/vh-watch)
+  2. content xy center alignment
+  3. prevents unwanted scroll
+  4. reset browser default
  */
 
 $hack-font: "Hack", monospace;
 
 body {
-  display: flex;
-  overflow: hidden;
-  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
-  flex-direction: column;
-  margin: 0;
+  display: flex; /* 2 */
+  overflow: hidden; /* 3 */
+  height: 100vh; /* 1 */
+  height: calc(var(--vh, 1vh) * 100); /* 1 */
+  flex-direction: column; /* 2 */
+  margin: 0; /* 4 */
   font-family: $hack-font;
 }
 
 /**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ * 1. remove the gray background on active links in ie 10
+ * 2. remove gaps in links underline in ios 8+ and safari 8+
+ * 3. remove the outline on focused links when they are also active or hovered
+ *    in all browsers (opinionated)
+ * 4. change cursor display on links to match context menu behaviour
  */
 
 a {
   background-color: transparent; /* 1 */
   text-decoration-skip: objects; /* 2 */
 
+  &:active,
+  &:hover {
+    outline-width: 0; /* 3 */
+  }
+
   .--context-menu-open & {
-    cursor: default;
+    cursor: default; /* 4 */
   }
 }
 
 /**
- * Remove the outline on focused links when they are also active or hovered
- * in all browsers (opinionated).
+ * add the correct font weight in chrome, edge, and safari
  */
 
-a:active,
-a:hover {
-  outline-width: 0;
-}
+strong { font-weight: 900; }
 
 /**
- * Add the correct font weight in Chrome, Edge, and Safari.
+ * remove the border on images inside links in ie 10-
  */
 
-strong {
-  font-weight: 900;
-}
+img { border-style: none; }
+figure { margin: 0; }
 
 /**
- * Remove the border on images inside links in IE 10-.
+ * hide the overflow in ie
  */
 
-img {
-  border-style: none;
-}
-
-figure {
-  margin: 0;
-}
+svg:not(:root) { overflow: hidden; }
 
 /**
- * Hide the overflow in IE.
+ * remove outline on focus
  */
 
-svg:not(:root) {
-  overflow: hidden;
-}
+:focus { outline: 0; }
