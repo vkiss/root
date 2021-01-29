@@ -69,26 +69,28 @@ export function randomizeColorPalette ( randomPalette ) {
       color: ${differLinkColor};
     }
 
+    a.link:focus,
     a.link:hover {
       border-bottom-color: ${differLinkColor};
       background-color: ${differLinkColor};
       color: ${randomPalette.colors[6]};
     }
 
-    .--context-menu-open$a.link:hover {
+    .--context-menu-open$a.link:hover:not(:focus) {
       border-bottom-color: inherit;
       background-color: inherit;
       color: ${differLinkColor};
     }
 
+    a.html-code:focus,
     a.html-code:hover {
       color: ${randomPalette.colors[6]};
       border-bottom-color: ${randomPalette.colors[7]};
       background-color: ${randomPalette.colors[7]};
     }
 
-    .--context-menu-open$a.html-code:hover {
-      color: inherit;
+    .--context-menu-open$a.html-code:hover:not(:focus) {
+      color: ${randomPalette.colors[7]};
       border-bottom-color: inherit;
       background-color: inherit;
     }
@@ -97,13 +99,14 @@ export function randomizeColorPalette ( randomPalette ) {
       color: ${randomPalette.colors[5]}
     }
 
+    aside$a:focus,
     aside$a:hover {
       color: ${randomPalette.colors[6]};
       border-bottom-color: ${randomPalette.colors[5]};
       background-color: ${randomPalette.colors[5]};
     }
 
-    .--context-menu-open$aside$a:hover {
+    .--context-menu-open$aside$a:hover:not(:focus) {
       color: inherit;
       border-bottom-color: inherit;
       background-color: inherit;
