@@ -260,6 +260,26 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
       createContextMenu();
     }
 
+    // Calculate Max Context Menu Size (including sub itens)
+    const allItensWithSubItens = contextMenu.querySelectorAll( ".context-menu-primary-item" );
+
+    let childrenRecord = 0;
+    let childrenRecordIndex = 0;
+
+    for ( let i = 0; i < allItensWithSubItens.length ; i++ ) {
+      if ( allItensWithSubItens[i].querySelector( ".context-menu-sub-menu" ) !== null ) {
+        const noOfChildren = allItensWithSubItens[i].querySelector( ".context-menu-sub-menu" ).children.length;
+
+        if ( noOfChildren > childrenRecord ) {
+          childrenRecord = noOfChildren;
+          childrenRecordIndex = i + 1;
+        }
+      }
+    }
+
+    const eachItemHeight = 27;
+
+    const greatestHeight = 6 + ( eachItemHeight * childrenRecord + eachItemHeight * childrenRecordIndex );
 
     if( event.button == 2 ) {
       contextMenu.removeAttribute( "style" );
@@ -270,13 +290,15 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
       const leftPos = event.clientX - ( window.innerWidth - event.clientX < elementRect.width ? elementRect.width + 4 : 4 );
       const topPos = event.clientY - ( window.innerHeight - event.clientY < elementRect.height ? elementRect.height + 4 : 4 );
 
+
+
       if ( window.innerWidth - event.clientX < elementRect.width * 2 ) {
         contextMenu.classList.add( "--left" );
       } else {
         contextMenu.classList.remove( "--left" );
       }
 
-      if ( window.innerHeight - event.clientY < elementRect.height ) {
+      if ( window.innerHeight - event.clientY < greatestHeight ) {
         contextMenu.classList.add( "--bottom" );
       } else {
         contextMenu.classList.remove( "--bottom" );
