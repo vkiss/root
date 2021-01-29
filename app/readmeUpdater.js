@@ -30,7 +30,7 @@ const distIndex = path.resolve( `${root}/dist`, "index.html" );
 const getFilesizeInBytes = ( filename ) => {
   const stats = fs.statSync( filename );
   const fileSizeInBytes = stats.size;
-  return fileSizeInBytes / 1000 + " KB";
+  return fileSizeInBytes / 1000 + " kb";
 };
 
 /**
@@ -41,7 +41,9 @@ const getFilesizeInBytes = ( filename ) => {
 
 const READMEcontent = `<img src="rootFiles/favicon.png" width="256px" />
 
-Tamanho do arquivo index.html final: **${getFilesizeInBytes( distIndex )}**`;
+\`\`\`
+app size: ${getFilesizeInBytes( distIndex )}
+\`\`\``;
 
 /**
  * -----------------------------
