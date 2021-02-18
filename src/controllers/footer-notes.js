@@ -26,7 +26,7 @@ export function createFooterNotes ( selectedColorPallete ) {
 
   // icons
   document.getElementById( "footer-notes" ).appendChild(
-    createFooterNoteItem( "ícones:#<a href=\"https://www.flaticon.com/br/autores/freepik\" target=\"_blank\">freepik</a>,#<a href=\"http://vaadin.com/font-icons\" target=\"_blank\">vaadin</a>#and#<a href=\"https://commons.wikimedia.org/wiki/File:Npm-logo.svg\" target=\"_blank\">wikipedia</a>" )
+    createFooterNoteItem( "ícones:#<a href=\"https://www.flaticon.com/br/autores/freepik\" target=\"_blank\">freepik</a>,#<a href=\"http://vaadin.com/font-icons\" target=\"_blank\">vaadin</a>#e#<a href=\"https://commons.wikimedia.org/wiki/File:Npm-logo.svg\" target=\"_blank\">wikipedia</a>" )
   );
 
   // hosted by
