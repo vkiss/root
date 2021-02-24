@@ -237,7 +237,7 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
         {
           "icon": copyIcon,
           "title": "copiar telefone",
-          "copy": "(11) 985750139"
+          "copy": "11985750139"
         }
       ] );
     } else if ( event.path.includes( document.getElementById( "promo-box" ) ) ) {

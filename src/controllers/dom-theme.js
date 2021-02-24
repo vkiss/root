@@ -38,6 +38,7 @@ export function randomizeColorPalette ( randomPalette ) {
 
   .html-comment {
     font-style: italic;
+    user-select: none;
     color: ${randomPalette.colors[5]};
   }
 
