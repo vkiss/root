@@ -1,5 +1,3 @@
-<img src="rootFiles/favicon.png" width="256px" />
-
-```
-app size: 55.075 kb (0.001 kb)
-```
+- [vkiss.com.br](https://www.vkiss.com.br/)
+- [@vinik](https://twitter.com/vinik)
+- [stackoverflow](https://stackoverflow.com/users/5446961/kiss)

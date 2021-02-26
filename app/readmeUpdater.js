@@ -100,8 +100,9 @@ const writeREADME = () => {
  */
 
 const runScript = () => {
-  info( chalk.cyan( "> updating readme.md" ) );
-  writeREADME();
+  info( chalk.cyan( "> hey, this script is doing nothing. either set me free and delete me or give me something to do" ) );
+  // info( chalk.cyan( "> updating readme.md" ) );
+  // writeREADME();
 };
 
 runScript();
