@@ -35,7 +35,6 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.4.1",
     "css-loader": "^4.3.0",
-    "currency.js": "^2.0.3",
     "eslint": "^7.17.0",
     "file-loader": "^6.2.0",
     "ftp-deploy": "^2.4.0",
@@ -58,7 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build && node app/readmeUpdater && git add README.md && git add webpack.config.js && lint-staged"
+      "pre-commit": "npm run build && node app/appSizeAlert && git add webpack.config.js && lint-staged"
     }
   },
   "lint-staged": {
