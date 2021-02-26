@@ -35,7 +35,14 @@ export function createFooterNotes ( selectedColorPallete ) {
   );
 
   // version and source code
+  const filterVersion = ( version ) => {
+    const major = version.split( "." )[0];
+    const minor = version.split( "." )[1];
+    const patch = version.split( "." )[2];
+
+    return `${major}.${minor}${ patch === "0" ? "" : `.${patch}` }`;
+  };
   document.getElementById( "footer-notes" ).appendChild(
-    createFooterNoteItem( `v${VERSION}#|#<a target="_blank" href="https://github.com/vkiss/root">código#fonte</a>` )
+    createFooterNoteItem( `v${filterVersion( VERSION )}#|#<a target="_blank" href="https://github.com/vkiss/root">código#fonte</a>` )
   );
 }
