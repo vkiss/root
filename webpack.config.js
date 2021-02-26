@@ -78,7 +78,7 @@ module.exports = {
       meta: {
         viewport: "width=device-width,minimum-scale=1",
         description: "Escrevo códigos que deixam sites bonitos.",
-        robots: "noodp,noydir"
+        robots: "index, follow"
       },
       minify: {
         removeComments: true,
