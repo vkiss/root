@@ -67,11 +67,6 @@ module.exports = {
             label: "github",
             href: "https://github.com/vkiss",
             target: "_blank",
-          },
-          {
-            label: "picpay",
-            href: "https://app.picpay.com/user/vkiss",
-            target: "_blank",
           }
         ],
       },
