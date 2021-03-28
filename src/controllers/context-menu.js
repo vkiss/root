@@ -11,6 +11,7 @@ import githubLogo from "../assets/logos/github.svg";
 import npmLogo from "../assets/logos/npm.svg";
 import parajegas from "../assets/logos/parajegas.svg";
 import sophialis from "../assets/logos/sophialis.svg";
+import greensign from "../assets/logos/greensign.svg";
 
 import emailIcon from "../assets/icons/email.svg";
 import linkBlank from "../assets/icons/external-link.svg";
@@ -49,6 +50,12 @@ const contextMenuItens = [
         "icon": linkBlank,
         "label": "fgc.org.br",
         "link": "https://www.fgc.org.br/"
+      },
+      {
+        "icon": greensign,
+        "icon_adjust": 3,
+        "label": "greensign.com.br",
+        "link": "https://greensign.com.br/"
       },
       {
         "icon": parajegas,
