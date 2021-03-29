@@ -45,17 +45,12 @@ const contextMenuItens = [
     "icon": portfolioLogo,
     "icon_adjust": 2,
     "title": "portolio",
+    "sort": "abc",
     "itens": [
       {
         "icon": linkBlank,
         "label": "fgc.org.br",
         "link": "https://www.fgc.org.br/"
-      },
-      {
-        "icon": greensign,
-        "icon_adjust": 3,
-        "label": "greensign.com.br",
-        "link": "https://greensign.com.br/"
       },
       {
         "icon": parajegas,
@@ -67,6 +62,12 @@ const contextMenuItens = [
         "icon_adjust": 1,
         "label": "sophialis.com",
         "link": "https://www.sophialis.com/"
+      },
+      {
+        "icon": greensign,
+        "icon_adjust": 3,
+        "label": "greensign.com.br",
+        "link": "https://greensign.com.br/"
       },
     ]
   },
@@ -145,17 +146,26 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
       const subMenu = document.createElement( "DIV" );
       subMenu.className = "context-menu-sub-menu";
 
-      for ( let x = 0; x < that.itens.length; x++ ) {
+      const itensArray = that.itens.sort( ( a, b ) => {
+        if ( that.sort === "abc" ) {
+          if( a.label < b.label ) { return -1; }
+          if( a.label > b.label ) { return 1; }
+          return 0;
+        }
+        return 0;
+      } );
+
+      for ( let x = 0; x < itensArray.length; x++ ) {
         const subItem = document.createElement( "A" );
         subItem.className = "context-menu-secondary-item";
-        subItem.setAttribute( "href", that.itens[x].link );
+        subItem.setAttribute( "href", itensArray[x].link );
 
-        if ( that.itens[x].icon ) {
+        if ( itensArray[x].icon ) {
           const iconContainer = document.createElement( "SPAN" );
           iconContainer.className = "context-menu-icon";
-          iconContainer.innerHTML = that.itens[x].icon;
+          iconContainer.innerHTML = itensArray[x].icon;
 
-          adjustIconPadding( iconContainer, that.itens[x] );
+          adjustIconPadding( iconContainer, itensArray[x] );
 
           subItem.appendChild( iconContainer );
 
@@ -163,7 +173,7 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
 
         const subItemTextContainer = document.createElement( "SPAN" );
         subItemTextContainer.className = "context-menu-label";
-        subItemTextContainer.appendChild( document.createTextNode( that.itens[x].label ) );
+        subItemTextContainer.appendChild( document.createTextNode( itensArray[x].label ) );
         subItem.appendChild( subItemTextContainer );
 
         subItem.setAttribute( "target", "_blank" );
