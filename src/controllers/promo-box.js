@@ -2,7 +2,7 @@ import { addStyle, convertBlankSpaceToTrailingSpacesElement } from "../utils";
 
 import logoPicPay from "../assets/logos/picpay.svg";
 import logoUmbler from "../assets/logos/umbler.svg";
-import logoXP from "../assets/logos/xp.svg";
+import logoMeliuz from "../assets/logos/meliuz.svg";
 
 export function createPromoLoop () {
   const promos = [
@@ -25,15 +25,6 @@ export function createPromoLoop () {
       imgSize: 50,
       text: "A Umbler é uma empresa de Cloud Hosting que tem a missão de facilitar a vida para agências e devs.",
       callout: "Crie sua conta e ganhe 7 dias grátis."
-    },
-    {
-      hat: "AD",
-      title: "XP Investimentos",
-      href: "https://cadastro.xpi.com.br/desktop/step/1?utm_source=social-media&utm_medium=colaboradores&utm_campaign=aquisicao_xp_gxp_202000_lwer_abrirconta_trafego_abrir-conta_nac&utm_content=aberta_no_nac_texto_na_na&utm_term=u000967_na_colaborador_home_na",
-      target: "_blank",
-      img: logoXP,
-      text: "As melhores opções de investimentos do mercado. Abertura de conta sem custo. Na XP nenhum cliente é igual ao outro.",
-      callout: "Abra sua conta"
     }
   ];
 
