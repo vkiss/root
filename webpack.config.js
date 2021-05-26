@@ -59,6 +59,11 @@ module.exports = {
         telefoneLink: "https://api.whatsapp.com/send?phone=5511985750139",
         footerLinks: [
           {
+            label: "polywork",
+            href: "https://www.polywork.com/vinik",
+            target: "_blank",
+          },
+          {
             label: "linkedin",
             href: "https://www.linkedin.com/in/vkiss/",
             target: "_blank",
