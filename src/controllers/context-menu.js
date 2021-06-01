@@ -36,6 +36,12 @@ const contextMenuItens = [
       {
         "icon": npmLogo,
         "icon_adjust": 2,
+        "label": "clear-path",
+        "link": "https://www.npmjs.com/package/clear-path"
+      },
+      {
+        "icon": npmLogo,
+        "icon_adjust": 2,
         "label": "vh-watch",
         "link": "https://www.npmjs.com/package/vh-watch"
       }
