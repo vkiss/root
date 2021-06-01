@@ -56,7 +56,7 @@ module.exports = {
       templateParameters: {
         email: "contato@vkiss.com.br",
         telefone: "(11) 985 750 139",
-        telefoneLink: "https://api.whatsapp.com/send?phone=5511985750139",
+        telefoneLink: "https://wa.me/5511985750139",
         footerLinks: [
           {
             label: "polywork",
