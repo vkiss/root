@@ -227,11 +227,11 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
           "title": "escrever um e-mail",
           "link": document.getElementById( "email-link-desktop" ).getAttribute( "href" )
         },
-        {
-          "icon": logoXP,
-          "title": "temos vagas para front end",
-          "link": "mailto:vinicius.kiss@xpi.com.br?subject=Interesse na vaga de Front end"
-        },
+        // {
+        //   "icon": logoXP,
+        //   "title": "temos vagas para front end",
+        //   "link": "mailto:vinicius.kiss@xpi.com.br?subject=Interesse na vaga de Front end"
+        // },
         {
           "hr": true
         },
