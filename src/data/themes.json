@@ -29,5 +29,10 @@
     "name": "noctis",
     "link": "https://github.com/liviuschera/noctis",
     "colors": [ "#50868C", "#F45B1C", "#DF9500", "#ADCBCD", "#51ED9F", "#50868C", "#07262A", "#ADCBCD"]
+  },
+  {
+    "name": "mayukai mirage",
+    "link": "https://github.com/GulajavaMinistudio/Mayukai-Theme",
+    "colors": [ "#AAA8A4", "#F41989", "#F5C64E", "#929595", "#9BCE67", "#596773", "#131926", "#C6CAB7"]
   }
 ]
