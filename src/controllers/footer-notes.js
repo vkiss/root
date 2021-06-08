@@ -49,7 +49,7 @@ export function createFooterNotes ( selectedColorPallete ) {
     const minor = version.split( "." )[1];
     const patch = version.split( "." )[2];
 
-    return `${major}.${minor}${ patch === "0" ? "" : `.${patch}` }`;
+    return `${major}.${minor}${ patch === "0" ? "" : "." + patch }`;
   };
 
   includeFooterNote(
