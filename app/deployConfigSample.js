@@ -1,23 +1,13 @@
 module.exports = {
-  // enable/disable publish task
-  publishEnabled: true,
-
-  ftp: {
-    host: "string",
-    port: 21,
-    user: "string",
-    pwd: "string",
-  },
-
+  publishEnabled: true, // enable/disable publish task
+  user: "string",
+  password: "string",
+  host: "string",
+  port: 21,
   localRoot: "string",
   remoteRoot: "string",
-
-  upload: [],
-  ignore: [],
-
-  // delete ALL existing files at destination before uploading, if true
-  cleanServer: false,
-
-  // Passive mode is forced (EPSV command is not sent)
-  forcePasv: true,
+  include: [],
+  exclude: [],
+  deleteRemote: false, // delete ALL existing files at destination before uploading, if true
+  forcePasv: true // Passive mode is forced (EPSV command is not sent)
 };
