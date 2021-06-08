@@ -19,6 +19,7 @@ const path = require( "path" );
 
 const root = "./";
 const distIndex = path.resolve( `${root}/dist`, "index.html" );
+const webpackFile = path.resolve( "./", "webpack.config.js" );
 
 /**
  * -----------------------------
@@ -39,6 +40,18 @@ const getFilesizeInBytes = ( filename ) => {
 const runScript = () => {
   const currentSize = getFilesizeInBytes( distIndex );
   info( chalk.cyan( "> app size " ) + chalk.bgMagenta.bold( ` ${currentSize}kb ` ) );
+
+  fs.readFile( webpackFile, "utf8", function ( err,data ) {
+    if ( err ) {
+      return info( chalk.red( err ) );
+    }
+
+    const result = data.replace( /FILEWEIGHT: \"(\d|.)+\"/m, `FILEWEIGHT: "${currentSize}"` );
+
+    fs.writeFile( webpackFile, result, "utf8", function ( nerr ) {
+      if ( nerr ) return info( chalk.red( nerr ) );
+    } );
+  } );
 };
 
 runScript();

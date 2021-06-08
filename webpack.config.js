@@ -89,7 +89,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin( {
       VERSION: JSON.stringify( require( "./package.json" ).version ),
-      UMBLERREF: JSON.stringify( "https://www.umbler.com/br/seja-bem-vindo?a=7kly6v4e" )
+      UMBLERREF: JSON.stringify( "https://www.umbler.com/br/seja-bem-vindo?a=7kly6v4e" ),
+      FILEWEIGHT: "62.414"
     } ),
     new CopyPlugin( {
       patterns: [

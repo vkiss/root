@@ -11,9 +11,13 @@ const createFooterNoteItem = ( content ) => {
   return element;
 };
 
+const includeFooterNote = ( itemToInclude ) => {
+  document.getElementById( "footer-notes" ).appendChild( itemToInclude );
+};
+
 export function createFooterNotes ( selectedColorPallete ) {
-  for ( let i = 0; i < regularNotes.length; i++ ) {
-    document.getElementById( "footer-notes" ).appendChild( createFooterNoteItem( regularNotes[i] ) );
+  for ( const note of regularNotes ) {
+    includeFooterNote( createFooterNoteItem( note ) );
   }
 
   // html syntax
@@ -21,17 +25,22 @@ export function createFooterNotes ( selectedColorPallete ) {
     const palleteItemP = document.createElement( "P" );
     palleteItemP.innerHTML = `${convertBlankSpaceToTrailingSpacesElement( ".cor da sintaxe de html baseada no tema " )}${( selectedColorPallete.link ? `<a target=\"_blank\" href="${selectedColorPallete.link}">` : "" )}${convertBlankSpaceToTrailingSpacesElement( selectedColorPallete.name )}${( selectedColorPallete.link ? "</a>" : "" )}`;
 
-    document.getElementById( "footer-notes" ).appendChild( palleteItemP );
+    includeFooterNote( palleteItemP );
   }
 
   // icons
-  document.getElementById( "footer-notes" ).appendChild(
+  includeFooterNote(
     createFooterNoteItem( "ícones:#<a href=\"https://www.flaticon.com/br/autores/freepik\" target=\"_blank\">freepik</a>,#<a href=\"http://vaadin.com/font-icons\" target=\"_blank\">vaadin</a>#e#<a href=\"https://commons.wikimedia.org/wiki/File:Npm-logo.svg\" target=\"_blank\">wikipedia</a>" )
   );
 
   // hosted by
-  document.getElementById( "footer-notes" ).appendChild(
+  includeFooterNote(
     createFooterNoteItem( `hospedado#pela#<a target=\"_blank\" href=\"${UMBLERREF}\">umbler</a>` )
+  );
+
+  // file weight
+  includeFooterNote(
+    createFooterNoteItem( `peso:#${FILEWEIGHT}kb` )
   );
 
   // version and source code
@@ -42,7 +51,8 @@ export function createFooterNotes ( selectedColorPallete ) {
 
     return `${major}.${minor}${ patch === "0" ? "" : `.${patch}` }`;
   };
-  document.getElementById( "footer-notes" ).appendChild(
+
+  includeFooterNote(
     createFooterNoteItem( `v${filterVersion( VERSION )}#|#<a target="_blank" href="https://github.com/vkiss/root">código#fonte</a>` )
   );
 }

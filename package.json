@@ -1,6 +1,6 @@
 {
   "name": "vkiss",
-  "version": "3.5.7",
+  "version": "3.6.0",
   "description": "",
   "main": "index.js",
   "author": {
@@ -12,7 +12,8 @@
     "start": "npm run dev",
     "dev": "node app/organizeEnvs dev && webpack-dev-server --mode development --hot --inline",
     "build": "node app/organizeEnvs prod && webpack --mode production",
-    "deploy": "npm run build && node app/prepareForProduction && node app/deploy"
+    "deploy": "npm run size_update && node app/prepareForProduction && node app/deploy",
+    "size_update": "npm run build && node app/appSizeAlert"
   },
   "homepage": "https://github.com/vkiss/root#readme",
   "repository": {
@@ -57,7 +58,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run build && node app/appSizeAlert && git add webpack.config.js && lint-staged"
+      "pre-commit": "npm run size_update && git add webpack.config.js && lint-staged"
     }
   },
   "lint-staged": {
