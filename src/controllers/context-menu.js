@@ -6,7 +6,7 @@ import { copyToClipboard } from "../utils";
 
 import telegramSuperior from "../assets/logos/telegram.svg";
 import zipZopLogo from "../assets/logos/zipzop.svg";
-import logoXP from "../assets/logos/xp.svg";
+// import logoXP from "../assets/logos/xp.svg";
 import githubLogo from "../assets/logos/github.svg";
 import npmLogo from "../assets/logos/npm.svg";
 import parajegas from "../assets/logos/parajegas.svg";

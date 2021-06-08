@@ -2,7 +2,6 @@ import { addStyle, convertBlankSpaceToTrailingSpacesElement } from "../utils";
 
 import logoPicPay from "../assets/logos/picpay.svg";
 import logoUmbler from "../assets/logos/umbler.svg";
-import logoMeliuz from "../assets/logos/meliuz.svg";
 
 export function createPromoLoop () {
   const promos = [
@@ -25,16 +24,6 @@ export function createPromoLoop () {
       imgSize: 50,
       text: "A Umbler é uma empresa de Cloud Hosting que tem a missão de facilitar a vida para agências e devs.",
       callout: "Crie sua conta e ganhe 7 dias grátis."
-    },
-    {
-      hat: "AD",
-      title: "Méliuz",
-      href: "https://www.meliuz.com.br/i/ref_995add?ref_source=2",
-      target: "_blank",
-      img: logoMeliuz,
-      imgSize: 50,
-      text: "Descubra como ganhar cashback em suas compras, usando o Méliuz.",
-      callout: "Crie sua conta e ganhe R$ 5."
     }
   ];
 
