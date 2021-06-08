@@ -29,11 +29,11 @@ export function createPromoLoop () {
 
   let returnLoop = [];
 
-  for ( let i = 0; i < promos.length; i++ ) {
-    const numberToRepeat = ( promos[i].matter !== undefined ? promos[i].matter : 1 );
+  for ( const promo of promos ) {
+    const numberToRepeat = promo.matter || 1;
 
     for ( let o = 0; o < numberToRepeat; o++ ) {
-      returnLoop.push( promos[i] );
+      returnLoop.push( promo );
     }
   }
 
@@ -50,7 +50,7 @@ export function createPromoBox ( promo ) {
   promoBoxEl.innerHTML = `
     <header class="promo-box-header">${promo.hat}</header>
     <div class="promo-box-body">
-      <figure ${( promo.imgSize ? `style="min-width: calc(${promo.imgSize}px + 1rem)"` : "" )} class="promo-box-media" data-max="${promo.imgSize}">
+      <figure ${( promo.imgSize ? "style=\"min-width: calc(" + promo.imgSize + "px + 1rem)\"" : "" )} class="promo-box-media" data-max="${promo.imgSize}">
         ${promo.img}
       </figure>
       <div class="promo-box-ad">
@@ -61,7 +61,7 @@ export function createPromoBox ( promo ) {
 
   addStyle( `
     .promo-box-media$svg {
-      max-width: ${promo.imgSize ? promo.imgSize : "32"}px;
+      max-width: ${promo.imgSize || "32"}px;
       max-height: 50px;
     }
   ` );

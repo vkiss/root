@@ -123,9 +123,5 @@ export function injectTrailingSpaces () {
     const that = elementsToInjectTrailingSpace[i];
     that.innerHTML = convertBlankSpaceToTrailingSpacesElement( that.innerText.replace( "<!--", "&lt;!--" ) );
     that.classList.remove( "js-inject-trailing-space" );
-
-    if ( that.classList.length === 0 ) {
-      that.removeAttribute( "class" );
-    }
   }
 }
