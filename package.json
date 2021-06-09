@@ -15,7 +15,7 @@
     "deploy": "npm run size_update && node app/prepareForProduction && node app/deploy",
     "size_update": "npm run build && node app/appSizeAlert",
     "prepare": "husky install",
-    "precommit": "npm run size_update && git add webpack.config.js && lint-staged"
+    "precommit": "lint-staged && npm run size_update && git add webpack.config.js"
   },
   "homepage": "https://github.com/vkiss/root#readme",
   "repository": {
