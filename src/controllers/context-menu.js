@@ -49,7 +49,7 @@ const contextMenuItens = [
   },
   {
     "icon": portfolioLogo,
-    "icon_adjust": 2,
+    "icon_adjust": 3,
     "title": "portolio",
     "sort": "abc",
     "itens": [
@@ -224,6 +224,7 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
       createContextMenu( [
         {
           "icon": emailIcon,
+          "icon_adjust": 2,
           "title": "escrever um e-mail",
           "link": document.getElementById( "email-link-desktop" ).getAttribute( "href" )
         },
@@ -237,6 +238,7 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
         },
         {
           "icon": copyIcon,
+          "icon_adjust": 2,
           "title": "copiar endereço de e-mail",
           "copy": "contato@vkiss.com.br"
         }
@@ -259,6 +261,7 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
         },
         {
           "icon": copyIcon,
+          "icon_adjust": 2,
           "title": "copiar telefone",
           "copy": "11985750139"
         }
