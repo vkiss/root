@@ -96,7 +96,7 @@ const closeMenu = () => {
 
 const adjustIconPadding = ( ICONCONTAINER, DATA ) => {
   if ( DATA.icon_adjust || DATA.icon === linkBlank ) {
-    ICONCONTAINER.style.padding = `0 ${ DATA.icon === linkBlank ? 4 : DATA.icon_adjust }px`;
+    ICONCONTAINER.style.padding = "0 " + ( DATA.icon === linkBlank ? 4 : DATA.icon_adjust ) + "px";
   }
 };
 
@@ -313,8 +313,6 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
       const leftPos = event.clientX - ( window.innerWidth - event.clientX < elementRect.width ? elementRect.width + 4 : 4 );
       const topPos = event.clientY - ( window.innerHeight - event.clientY < elementRect.height ? elementRect.height + 4 : 4 );
 
-
-
       if ( window.innerWidth - event.clientX < elementRect.width * 2 ) {
         contextMenu.classList.add( "--left" );
       } else {
@@ -327,8 +325,8 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
         contextMenu.classList.remove( "--bottom" );
       }
 
-      contextMenu.style.left = `${leftPos}px`;
-      contextMenu.style.top = `${topPos}px`;
+      contextMenu.style.left = leftPos + "px";
+      contextMenu.style.top = topPos + "px";
     }
   } );
 
@@ -340,10 +338,6 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
 
       closeMenu();
       document.body.classList.remove( "--context-menu-open" );
-
-      if ( document.body.classList.length === 0 ) {
-        document.body.removeAttribute( "class" );
-      }
     }
   } );
 }
