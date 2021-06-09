@@ -278,7 +278,7 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
       createContextMenu( [
         {
           "icon": linkBlank,
-          "title": "abrir item em uma nova janela",
+          "title": "abrir em uma nova janela",
           "link": event.target.getAttribute( "href" )
         }
       ] );
