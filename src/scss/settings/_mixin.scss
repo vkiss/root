@@ -71,3 +71,18 @@
     fill: $color;
   }
 }
+
+@mixin main-app-element-controller( $transition-config: "" ) {
+  $transition_value: opacity .2s;
+
+  @if ( $transition-config ) {
+    $transition_value: #{$transition_value}, #{$transition-config};
+  }
+
+  opacity: 1;
+  transition: $transition_value;
+
+  .--run-on-bg & {
+    opacity: 0;
+  }
+}

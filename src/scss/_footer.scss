@@ -1,4 +1,6 @@
 footer {
+  @include main-app-element-controller();
+
   @include mobile {
     flex-grow: 1;
   }

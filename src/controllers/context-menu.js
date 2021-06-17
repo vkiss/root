@@ -4,6 +4,11 @@
 
 import { copyToClipboard } from "../utils";
 
+// apps
+import startApp from "../apps/trigger/start";
+import pixelEditor from "../apps/pixelEditor";
+
+// assets
 import telegramSuperior from "../assets/logos/telegram.svg";
 import zipZopLogo from "../assets/logos/zipzop.svg";
 // import logoXP from "../assets/logos/xp.svg";
@@ -13,6 +18,7 @@ import parajegas from "../assets/logos/parajegas.svg";
 import sophialis from "../assets/logos/sophialis.svg";
 import greensign from "../assets/logos/greensign.svg";
 
+// assets: icons
 import emailIcon from "../assets/icons/email.svg";
 import linkBlank from "../assets/icons/external-link.svg";
 import portfolioLogo from "../assets/icons/code.svg";
@@ -77,6 +83,13 @@ const contextMenuItens = [
       },
     ]
   },
+  // {
+  //   "hr": true
+  // },
+  // {
+  //   "title": "start pixel.js",
+  //   "app": pixelEditor
+  // },
   {
     "hr": true
   },
@@ -145,6 +158,13 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
     if ( that.copy ) {
       item.addEventListener( "click", () => {
         copyToClipboard( that.copy );
+      } );
+    }
+
+    if ( that.app ) {
+      console.log( "is app" );
+      item.addEventListener( "click", () => {
+        startApp( that.app );
       } );
     }
 

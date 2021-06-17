@@ -1,4 +1,6 @@
 #footer-notes {
+  @include main-app-element-controller();
+
   @include not-mobile {
     position: fixed;
     bottom: 10px;

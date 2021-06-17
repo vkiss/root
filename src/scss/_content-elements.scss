@@ -3,24 +3,26 @@ h1 {
   text-transform: uppercase;
 }
 
-section p,
-section h1 {
-  margin: 0 0 10px 0;
-}
-
 a {
   border-bottom: 1px solid currentColor;
   text-decoration: none;
 }
 
-section {
+#main-app {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   align-items: center;
   justify-content: flex-end;
 
+  @include main-app-element-controller();
+
   @include not-mobile {
     justify-content: center;
+  }
+
+  p,
+  h1 {
+    margin: 0 0 10px 0;
   }
 }
