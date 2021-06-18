@@ -1,6 +1,6 @@
 %context-menu-shared-settings {
   z-index: $zi_context_menu;
-  background-color: #262626;
+  background-color: $c-context-menu-bg;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
 }
 
