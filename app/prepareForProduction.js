@@ -66,13 +66,21 @@ fs.readFile( indexFile, "utf8", function ( err, data ) {
   }
 
   const allClasses = allClassesFromIndex.sort( ( a, b ) => { return b.length - a.length; } );
+  const randomIDs = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789".split( "" );
+  const overbooked = allClasses.length > randomIDs.length;
 
-  const randomIDs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split( "" );
+  info(
+    chalk.cyan( "> classes e ids usados " )
+    + chalk[( overbooked ? "bgRed" : "bgGreen" )].bold.black( ` ${allClasses.length} ` )
+    + chalk.cyan( " / " )
+    + chalk.bgMagenta.bold.black( ` ${randomIDs.length} ` )
+  );
 
-  if ( allClasses.length > randomIDs.length ) {
-    info( chalk.black.bgRed( "Existem mais classes nesse HTML do que letras em dois alfabetos." ) );
-    info( chalk.red( "Dá uma revisada nesse DOM, ou inclui mais simbolos na const randomIDs" ) );
-    return;
+  if ( overbooked ) {
+    info( chalk.black.bgRed( "> ERROR: Existem mais classes nesse HTML do que letras em dois alfabetos." ) );
+    info( chalk.red( "> Dá uma revisada nesse DOM, ou inclui mais simbolos na const randomIDs:" ) );
+    info( chalk.red( "> app/prepareForProduction.js:69" ) );
+    throw new Error( "> overbook-kill" );
   }
 
   let newData = data;
