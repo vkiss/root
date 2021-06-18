@@ -2,7 +2,7 @@
  * Imports
  */
 
-import { copyToClipboard } from "../utils";
+import { copyToClipboard, scanNodeDimension } from "../utils";
 
 // apps
 import startApp from "../apps/trigger/start";
@@ -331,25 +331,10 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
       contextMenu.removeAttribute( "style" );
       contextMenu.classList.toggle( "--display" );
 
-      const elementRect = contextMenu.getBoundingClientRect();
+      const scanResult = scanNodeDimension( event, contextMenu, greatestHeight ); // returns mouse position
 
-      const leftPos = event.clientX - ( window.innerWidth - event.clientX < elementRect.width ? elementRect.width + 4 : 4 );
-      const topPos = event.clientY - ( window.innerHeight - event.clientY < elementRect.height ? elementRect.height + 4 : 4 );
-
-      if ( window.innerWidth - event.clientX < elementRect.width * 2 ) {
-        contextMenu.classList.add( "--left" );
-      } else {
-        contextMenu.classList.remove( "--left" );
-      }
-
-      if ( window.innerHeight - event.clientY < greatestHeight ) {
-        contextMenu.classList.add( "--bottom" );
-      } else {
-        contextMenu.classList.remove( "--bottom" );
-      }
-
-      contextMenu.style.left = leftPos + "px";
-      contextMenu.style.top = topPos + "px";
+      contextMenu.style.left = scanResult.left + "px";
+      contextMenu.style.top = scanResult.top + "px";
     }
   } );
 

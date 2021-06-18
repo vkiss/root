@@ -15,6 +15,7 @@ import { consoleController } from "./controllers/console";
 import { createPromoLoop, createPromoBox } from "./controllers/promo-box";
 import { randomizeColorPalette, injectTrailingSpaces } from "./controllers/dom-theme";
 import { createFooterNotes } from "./controllers/footer-notes";
+import { mouseTooltipController } from "./controllers/mouse-tooltip";
 import contextMenu from "./controllers/context-menu";
 
 // Import :: Data
@@ -35,6 +36,7 @@ const init = () => {
   consoleController( randomPalette );
   injectTrailingSpaces();
   contextMenu( randomPalette, randomPromo );
+  mouseTooltipController();
   watchVh();
 };
 

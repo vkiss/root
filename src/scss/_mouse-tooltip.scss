@@ -1,0 +1,27 @@
+.mouse-tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-width: 200px;
+  padding: 5px;
+  padding: 9px 12px;
+  background-color: $c-context-menu-bg;
+  font-size: 10px;
+  line-height: 1.5;
+  opacity: 0;
+  text-transform: lowercase;
+  transition: opacity .6s;
+
+  &.--left {
+    margin-left: -10px;
+    text-align: right;
+  }
+
+  &.--top {
+    margin-top: 6px;
+  }
+
+  &.--visible {
+    opacity: .8;
+  }
+}
