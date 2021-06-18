@@ -66,7 +66,7 @@ fs.readFile( indexFile, "utf8", function ( err, data ) {
   }
 
   const allClasses = allClassesFromIndex.sort( ( a, b ) => { return b.length - a.length; } );
-  const randomIDs = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789".split( "" );
+  const randomIDs = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz".split( "" );
   const overbooked = allClasses.length > randomIDs.length;
 
   info(
@@ -88,10 +88,9 @@ fs.readFile( indexFile, "utf8", function ( err, data ) {
   for ( let i = 0; i < allClasses.length; i++ ) {
     const cssDeclaration = allClasses[i].replace( ".", "" ).replace( "#", "" );
     const thisCSSRegex = new RegExp( cssDeclaration, "g" );
-    const thisID = randomIDs[Math.floor( Math.random() * randomIDs.length )];
+    const thisID = randomIDs[i];
 
     newData = newData.replace( thisCSSRegex, thisID );
-    randomIDs.remove( thisID );
   }
 
   fs.writeFile( indexFile, newData, "utf8", function ( nerr ) {

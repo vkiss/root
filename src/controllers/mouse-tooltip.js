@@ -3,7 +3,7 @@ import { scanNodeDimension } from "../utils";
 const tooltipMessages = [ // never erase any line
   {
     "text": "clique com o botão direito do mouse",
-    "delay": 15
+    "delay": 25
   }
 ];
 
@@ -35,6 +35,11 @@ export function mouseTooltipController () {
 
     tooltipElement.style.transform = `translate(${scanResult.left + offsetX}px, ${scanResult.top + offsetY}px)`;
   }, false );
+
+  window.addEventListener( "click", () => {
+    tooltipElement.classList.remove( "--visible" );
+    tooltipElement.classList.add( "--seen" );
+  } );
 
   // dismiss tooltip after already visited context menu once
   window.addEventListener( "contextmenu", () => {
