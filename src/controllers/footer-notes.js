@@ -23,7 +23,7 @@ export function createFooterNotes ( selectedColorPallete ) {
   // html syntax
   if ( selectedColorPallete.name ) {
     const palleteItemP = document.createElement( "P" );
-    palleteItemP.innerHTML = `${convertBlankSpaceToTrailingSpacesElement( ".cor da sintaxe de html baseada no tema " )}${( selectedColorPallete.link ? `<a target=\"_blank\" href="${selectedColorPallete.link}">` : "" )}${convertBlankSpaceToTrailingSpacesElement( selectedColorPallete.name )}${( selectedColorPallete.link ? "</a>" : "" )}`;
+    palleteItemP.innerHTML = `${convertBlankSpaceToTrailingSpacesElement( ".tema da sintax baseado em " )}${( selectedColorPallete.link ? `<a target=\"_blank\" href="${selectedColorPallete.link}">` : "" )}${convertBlankSpaceToTrailingSpacesElement( selectedColorPallete.name )}${( selectedColorPallete.link ? "</a>" : "" )}`;
 
     includeFooterNote( palleteItemP );
   }
