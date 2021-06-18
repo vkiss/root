@@ -24,4 +24,8 @@
   &.--visible {
     opacity: .8;
   }
+
+  &.--seen {
+    opacity: 0;
+  }
 }
