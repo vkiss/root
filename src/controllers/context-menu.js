@@ -14,6 +14,7 @@ import zipZopLogo from "../assets/logos/zipzop.svg";
 // import logoXP from "../assets/logos/xp.svg";
 import githubLogo from "../assets/logos/github.svg";
 import npmLogo from "../assets/logos/npm.svg";
+import chromeLogo from "../assets/logos/chrome.svg";
 import parajegas from "../assets/logos/parajegas.svg";
 import sophialis from "../assets/logos/sophialis.svg";
 import greensign from "../assets/logos/greensign.svg";
@@ -80,6 +81,20 @@ const contextMenuItens = [
         "icon_adjust": 3,
         "label": "greensign.com.br",
         "link": "https://greensign.com.br/"
+      },
+    ]
+  },
+  {
+    "icon": chromeLogo,
+    "icon_adjust": 2,
+    "title": "plugins for chrome",
+    "sort": "abc",
+    "itens": [
+      {
+        "icon": chromeLogo,
+        "icon_adjust": 2,
+        "label": "instagrid",
+        "link": "https://chrome.google.com/webstore/detail/instapage-grid/mohdjgbnilphfcgejcccmgecffppgcin?hl=pt"
       },
     ]
   },
