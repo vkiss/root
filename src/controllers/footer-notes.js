@@ -29,8 +29,39 @@ export function createFooterNotes ( selectedColorPallete ) {
   }
 
   // icons
+
+
+  const iconsCreditsText = ( creditsArray ) => {
+    const sortedArray = creditsArray.sort( ( a, b ) => {
+      if( a.credit < b.credit ) { return -1; }
+      if( a.credit > b.credit ) { return 1; }
+      return 0;
+    } );
+
+    return `ícones:${sortedArray.map( ( icon )=> {
+      return "#<a href=\"" + icon.link + "\" target=\"_blank\">" + icon.credit + "</a>";
+    } )}`;
+  };
+
   includeFooterNote(
-    createFooterNoteItem( "ícones:#<a href=\"https://www.flaticon.com/br/autores/freepik\" target=\"_blank\">freepik</a>,#<a href=\"http://vaadin.com/font-icons\" target=\"_blank\">vaadin</a>#e#<a href=\"https://commons.wikimedia.org/wiki/File:Npm-logo.svg\" target=\"_blank\">wikipedia</a>" )
+    createFooterNoteItem( iconsCreditsText( [
+      {
+        "credit": "freepik",
+        "link": "https://www.flaticon.com/br/autores/freepik"
+      },
+      {
+        "credit": "vaadin",
+        "link": "http://vaadin.com/font-icons"
+      },
+      {
+        "credit": "wikipedia",
+        "link": "https://commons.wikimedia.org/wiki/File:Npm-logo.svg"
+      },
+      {
+        "credit": "icon8",
+        "link": "https://icons8.com/"
+      }
+    ] ) )
   );
 
   // hosted by
