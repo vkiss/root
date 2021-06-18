@@ -1,7 +1,10 @@
 import { scanNodeDimension } from "../utils";
 
 const tooltipMessages = [ // never erase any line
-  "clique com o botão direito do mouse"
+  {
+    "text": "clique com o botão direito do mouse",
+    "delay": 15
+  }
 ];
 
 export function mouseTooltipController () {
@@ -13,7 +16,7 @@ export function mouseTooltipController () {
 
   const tooltipElement = document.createElement( "DIV" );
   tooltipElement.className = "mouse-tooltip";
-  tooltipElement.appendChild( document.createTextNode( tooltipMessages[localStorageValue] ) );
+  tooltipElement.appendChild( document.createTextNode( tooltipMessages[localStorageValue].text ) );
 
   document.body.appendChild( tooltipElement );
 
@@ -23,7 +26,7 @@ export function mouseTooltipController () {
     if ( !tooltipElement.classList.contains( "--visible" ) && !tooltipElement.classList.contains( "--seen" ) ) {
       setTimeout( () => {
         tooltipElement.classList.add( "--visible" );
-      }, 1 * 100 );
+      }, tooltipMessages[localStorageValue].delay * 100 );
     }
     const offsetY = 26;
     const offsetX = 13;

@@ -39,7 +39,7 @@ const getFilesizeInBytes = ( filename ) => {
 
 const runScript = () => {
   const currentSize = getFilesizeInBytes( distIndex );
-  info( chalk.cyan( "> app size " ) + chalk.bgMagenta.bold( ` ${currentSize}kb ` ) );
+  info( chalk.cyan( "> app size " ) + chalk.bgMagenta.bold.black( ` ${currentSize}kb ` ) );
 
   fs.readFile( webpackFile, "utf8", function ( err,data ) {
     if ( err ) {
