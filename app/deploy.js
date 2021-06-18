@@ -1,6 +1,6 @@
 const FtpDeploy = require( "ftp-deploy" );
 const ftpDeploy = new FtpDeploy();
-const config = require( "./deployConfig" );
+const config = require( "../../vkiss-secrets/deploy/vkiss-root" );
 
 // use with promises
 if ( config.publishEnabled ) {
