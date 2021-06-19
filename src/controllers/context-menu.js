@@ -87,7 +87,7 @@ const contextMenuItens = [
   {
     "icon": chromeLogo,
     "icon_adjust": 2,
-    "title": "plugins for chrome",
+    "title": "plugins pro chrome",
     "sort": "abc",
     "itens": [
       {
