@@ -1,7 +1,7 @@
 import { scanNodeDimension, isMobileDevice } from "../utils";
 
-let TOOLTIP_ELEMENT;
-
+// vars
+const TOOLTIP_ELEMENT = document.createElement( "DIV" );
 const tooltipMessages = [ // never erase any line
   {
     "text": "clique com o botão direito do mouse",
@@ -9,8 +9,10 @@ const tooltipMessages = [ // never erase any line
   }
 ];
 
-const createAndAppendTooltip = ( localStorageValue ) => {
-  TOOLTIP_ELEMENT = document.createElement( "DIV" );
+let justCliked = false;
+let localStorageValue = localStorage.getItem( "seenMouseTooltip" ) || 0;
+
+const createAndAppendTooltip = () => {
   TOOLTIP_ELEMENT.className = "mouse-tooltip";
   TOOLTIP_ELEMENT.appendChild( document.createTextNode( tooltipMessages[localStorageValue].text ) );
 
@@ -26,16 +28,25 @@ const updateTooltipLocation = ( event ) => {
   TOOLTIP_ELEMENT.style.transform = `translate(${scanResult.left + offsetX}px, ${scanResult.top + offsetY}px)`;
 };
 
+const dismissTooltipOnClick = () => {
+  if ( justCliked ) { return; }
+  TOOLTIP_ELEMENT.classList.remove( "--visible" );
+  justCliked = true;
+
+  setTimeout( () => {
+    TOOLTIP_ELEMENT.classList.add( "--visible" );
+    justCliked = false;
+  }, tooltipMessages[localStorageValue].delay * 100 );
+};
+
 export function mouseTooltipController () {
   if ( isMobileDevice() ) { return; }
-
-  let localStorageValue = localStorage.getItem( "seenMouseTooltip" ) || 0;
 
   if ( parseInt( localStorageValue ) >= tooltipMessages.length ) {
     return;
   }
 
-  createAndAppendTooltip( localStorageValue );
+  createAndAppendTooltip();
 
   // mouse tracker
   document.addEventListener( "mousemove", updateTooltipLocation, false );
@@ -47,19 +58,8 @@ export function mouseTooltipController () {
     }, tooltipMessages[localStorageValue].delay * 100 );
   }
 
-  // dismiss then reappears in 15 seconds
-  let justCliked = false;
-
-  window.addEventListener( "click", () => {
-    if ( justCliked ) { return; }
-    TOOLTIP_ELEMENT.classList.remove( "--visible" );
-    justCliked = true;
-
-    setTimeout( () => {
-      TOOLTIP_ELEMENT.classList.add( "--visible" );
-      justCliked = false;
-    }, tooltipMessages[localStorageValue].delay * 100 );
-  } );
+  // dismiss click
+  window.addEventListener( "click", dismissTooltipOnClick );
 
   // dismiss tooltip after already visited context menu once
   window.addEventListener( "contextmenu", () => {
@@ -67,8 +67,10 @@ export function mouseTooltipController () {
       TOOLTIP_ELEMENT.classList.add( "--seen" );
       localStorageValue++;
       localStorage.setItem( "seenMouseTooltip", localStorageValue );
+      document.removeEventListener( "mousemove", updateTooltipLocation );
+      window.removeEventListener( "click", dismissTooltipOnClick );
     }
-  } );
+  }, { once: true } );
 }
 
 /**
