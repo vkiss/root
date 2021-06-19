@@ -1,4 +1,4 @@
-import { scanNodeDimension } from "../utils";
+import { scanNodeDimension, isMobileDevice } from "../utils";
 
 let TOOLTIP_ELEMENT;
 
@@ -27,6 +27,8 @@ const updateTooltipLocation = ( event ) => {
 };
 
 export function mouseTooltipController () {
+  if ( isMobileDevice() ) { return; }
+
   let localStorageValue = localStorage.getItem( "seenMouseTooltip" ) || 0;
 
   if ( parseInt( localStorageValue ) >= tooltipMessages.length ) {

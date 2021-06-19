@@ -2,7 +2,7 @@
  * Imports
  */
 
-import { copyToClipboard, scanNodeDimension } from "../utils";
+import { copyToClipboard, scanNodeDimension, isMobileDevice } from "../utils";
 
 // apps
 import startApp from "../apps/trigger/start";
@@ -29,10 +29,8 @@ import copyIcon from "../assets/icons/copy.svg";
  * Data
  */
 
-let contextMenu = document.querySelector( ".context-menu" );
-contextMenu = document.createElement( "DIV" );
-contextMenu.className = "context-menu";
-document.body.appendChild( contextMenu );
+const CONTEXTMENU = document.createElement( "DIV" );
+CONTEXTMENU.className = "context-menu";
 
 const contextMenuItens = [
   {
@@ -117,8 +115,8 @@ const contextMenuItens = [
 ];
 
 const closeMenu = () => {
-  if( contextMenu.classList.contains( "--display" ) ) {
-    contextMenu.classList.remove( "--display" );
+  if( CONTEXTMENU.classList.contains( "--display" ) ) {
+    CONTEXTMENU.classList.remove( "--display" );
   }
 };
 
@@ -133,7 +131,7 @@ const adjustIconPadding = ( ICONCONTAINER, DATA ) => {
  */
 
 const createContextMenu = ( menuData = contextMenuItens ) => {
-  contextMenu.innerHTML = "";
+  CONTEXTMENU.innerHTML = "";
 
   for ( let i = 0; i < menuData.length; i++ ) {
     const that = menuData[i];
@@ -236,11 +234,15 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
       item.appendChild( subMenuArrow );
     }
 
-    contextMenu.appendChild( item );
+    CONTEXTMENU.appendChild( item );
   }
 };
 
-export default function rightClickMenu ( themePallete, randomPromo ) {
+export default function contextMenuController ( themePallete, randomPromo ) {
+  if ( isMobileDevice() ) { return; }
+
+  document.body.appendChild( CONTEXTMENU );
+
   // addStyle( `
   // .context-menu-primary-item:hover {
   //   background-color: ${themePallete.colors[1]}
@@ -322,7 +324,7 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
     }
 
     // Calculate Max Context Menu Size (including sub itens)
-    const allItensWithSubItens = contextMenu.querySelectorAll( ".context-menu-primary-item" );
+    const allItensWithSubItens = CONTEXTMENU.querySelectorAll( ".context-menu-primary-item" );
 
     let childrenRecord = 0;
     let childrenRecordIndex = 0;
@@ -343,19 +345,19 @@ export default function rightClickMenu ( themePallete, randomPromo ) {
     const greatestHeight = 6 + ( eachItemHeight * childrenRecord + eachItemHeight * childrenRecordIndex );
 
     if( event.button == 2 ) {
-      contextMenu.removeAttribute( "style" );
-      contextMenu.classList.toggle( "--display" );
+      CONTEXTMENU.removeAttribute( "style" );
+      CONTEXTMENU.classList.toggle( "--display" );
 
-      const scanResult = scanNodeDimension( event, contextMenu, greatestHeight ); // returns mouse position
+      const scanResult = scanNodeDimension( event, CONTEXTMENU, greatestHeight ); // returns mouse position
 
-      contextMenu.style.left = scanResult.left + "px";
-      contextMenu.style.top = scanResult.top + "px";
+      CONTEXTMENU.style.left = scanResult.left + "px";
+      CONTEXTMENU.style.top = scanResult.top + "px";
     }
   } );
 
   window.addEventListener( "click", ( event ) => {
     if ( document.body.classList.contains( "--context-menu-open" ) ) {
-      if ( !event.path.includes( contextMenu ) ) {
+      if ( !event.path.includes( CONTEXTMENU ) ) {
         event.preventDefault();
       }
 
