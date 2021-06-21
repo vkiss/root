@@ -80,6 +80,11 @@ const contextMenuItens = [
         "label": "greensign.com.br",
         "link": "https://greensign.com.br/"
       },
+      {
+        "icon": linkBlank,
+        "label": "akhim.com.br",
+        "link": "https://www.akhim.com.br/"
+      },
     ]
   },
   {
