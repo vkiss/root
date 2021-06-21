@@ -31,6 +31,11 @@
     "colors": [ "#50868C", "#F45B1C", "#DF9500", "#ADCBCD", "#51ED9F", "#50868C", "#07262A", "#ADCBCD"]
   },
   {
+    "name": "winter is coming",
+    "link": "https://github.com/johnpapa/vscode-winteriscoming",
+    "colors": [ "#FEFEFE", "#53BEFF", "#F9EDAE", "#93D6F2", "#97D7A9", "#989999", "#031728", "#94D7F3"]
+  },
+  {
     "name": "mayukai mirage",
     "link": "https://github.com/GulajavaMinistudio/Mayukai-Theme",
     "colors": [ "#AAA8A4", "#F41989", "#F5C64E", "#929595", "#9BCE67", "#596773", "#131926", "#C6CAB7"]
