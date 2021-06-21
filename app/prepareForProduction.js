@@ -49,6 +49,17 @@ Array.prototype.remove = function() {
  * -----------------------------
  */
 
+const generateRandomIdsArray = () => {
+  const finalArray = [];
+  const allLetter = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz".split( "" );
+
+  for ( const letter of allLetter ) {
+    finalArray.push( letter );
+  }
+
+  return finalArray;
+};
+
 fs.readFile( indexFile, "utf8", function ( err, data ) {
   if ( err ) {
     return info( chalk.red( err ) );
@@ -61,12 +72,12 @@ fs.readFile( indexFile, "utf8", function ( err, data ) {
 
   const allClassesFromIndex = uniqueArray( data.match( /((\.|\#){1}([a-z]|[A-Z]|-|_){1,})(?={|\$|( ({|strong|\.|\,)))/g ) );
 
-  for ( let i = 0; i < aditionalClassesAndIds.length; i++ ) {
-    allClassesFromIndex.push( aditionalClassesAndIds[i] );
+  for ( const aditionalClassOrID of aditionalClassesAndIds ) {
+    allClassesFromIndex.push( aditionalClassOrID );
   }
 
   const allClasses = allClassesFromIndex.sort( ( a, b ) => { return b.length - a.length; } );
-  const randomIDs = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz".split( "" );
+  const randomIDs = generateRandomIdsArray();
   const overbooked = allClasses.length > randomIDs.length;
 
   info(
