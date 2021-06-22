@@ -1,5 +1,14 @@
 import { addStyle, randomIntFromInterval, convertBlankSpaceToTrailingSpacesElement } from "../utils";
 
+const hexToRgb = ( hex ) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec( hex );
+  return result ? {
+    r: parseInt( result[1], 16 ),
+    g: parseInt( result[2], 16 ),
+    b: parseInt( result[3], 16 )
+  } : null;
+};
+
 export function randomizeColorPalette ( randomPalette ) {
   const filterResult = ( number ) => { return ( number === 3 ? 4 : number ); };
   const differLinkColor = randomPalette.colors[filterResult( randomIntFromInterval( 1, 3 ) )];
@@ -44,6 +53,10 @@ export function randomizeColorPalette ( randomPalette ) {
 
   .promo-box-ad {
     color: ${randomPalette.colors[7]};
+  }
+
+  .promo-box-header {
+    color: rgba(${hexToRgb( randomPalette.colors[7] ).r},${hexToRgb( randomPalette.colors[7] ).g},${hexToRgb( randomPalette.colors[7] ).b},.7);
   }
 
   .promo-box-media$svg$rect,
