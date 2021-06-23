@@ -12,8 +12,8 @@
     "start": "npm run dev",
     "dev": "node app/organizeEnvs dev && webpack-dev-server --mode development --hot --inline",
     "build": "node app/organizeEnvs prod && webpack --mode production",
-    "deploy": "npm run size_update && node app/prepareForProduction && node app/deploy",
-    "size_update": "npm run build && node app/appSizeAlert",
+    "deploy": "npm run size_update && node app/deploy",
+    "size_update": "npm run build && node app/prepareForProduction && node app/appSizeAlert",
     "prepare": "husky install",
     "precommit": "lint-staged && npm run size_update && git add webpack.config.js"
   },
