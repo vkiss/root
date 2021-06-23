@@ -29,8 +29,6 @@ export function createFooterNotes ( selectedColorPallete ) {
   }
 
   // icons
-
-
   const iconsCreditsText = ( creditsArray ) => {
     const sortedArray = creditsArray.sort( ( a, b ) => {
       if( a.credit < b.credit ) { return -1; }
@@ -69,10 +67,10 @@ export function createFooterNotes ( selectedColorPallete ) {
     createFooterNoteItem( `hospedado#pela#<a target=\"_blank\" href=\"${UMBLERREF}\">umbler</a>` )
   );
 
-  // file weight
-  includeFooterNote(
-    createFooterNoteItem( `peso:#${FILEWEIGHT}kb` )
-  );
+  // file weight (removed)
+  // includeFooterNote(
+  //   createFooterNoteItem( `peso:#${FILEWEIGHT}kb` )
+  // );
 
   // version and source code
   const filterVersion = ( version ) => {

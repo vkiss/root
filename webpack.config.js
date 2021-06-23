@@ -90,7 +90,7 @@ module.exports = {
     new webpack.DefinePlugin( {
       VERSION: JSON.stringify( require( "./package.json" ).version ),
       UMBLERREF: JSON.stringify( "https://www.umbler.com/br/seja-bem-vindo?a=7kly6v4e" ),
-      FILEWEIGHT: "58.397"
+      FILEWEIGHT: "58.362"
     } ),
     new CopyPlugin( {
       patterns: [
