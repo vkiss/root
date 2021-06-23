@@ -67,7 +67,9 @@ fs.readFile( indexFile, "utf8", function ( err, data ) {
 
   const aditionalClassesAndIds = [
     "#email-link-desktop",
-    "#phone-link-desktop"
+    "#phone-link-desktop",
+    ".context-menu-secondary-item",
+    ".context-menu-link-sign"
   ];
 
   const allClassesFromIndex = uniqueArray( data.match( /((\.|\#){1}([a-z]|[A-Z]|-|_){1,})(?={|\$|( ({|strong|\.|\,)))/g ) );
