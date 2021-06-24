@@ -72,6 +72,20 @@
   }
 }
 
+/**
+ * app container and second app configs
+ */
+
+@mixin main-app-container() {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+@mixin second-app-container-shared-config() {
+  @include main-app-container;
+}
+
 @mixin main-app-element-controller( $transition-config: "" ) {
   $transition_value: opacity .2s;
 
@@ -84,5 +98,9 @@
 
   .--run-on-bg & {
     opacity: 0;
+  }
+
+  .--run-on-bg-finish & {
+    display: none;
   }
 }

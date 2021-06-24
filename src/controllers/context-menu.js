@@ -6,6 +6,7 @@ import { copyToClipboard, scanNodeDimension, isMobileDevice } from "../utils";
 
 // apps
 import startApp from "../apps/trigger/start";
+import closeApp from "../apps/trigger/close";
 import pixelEditor from "../apps/pixelEditor";
 
 // assets
@@ -101,13 +102,13 @@ const contextMenuItens = [
       },
     ]
   },
-  // {
-  //   "hr": true
-  // },
-  // {
-  //   "title": "start pixel.js",
-  //   "app": pixelEditor
-  // },
+  {
+    "hr": true
+  },
+  {
+    "title": "start pixel.js",
+    "app": pixelEditor
+  },
   {
     "hr": true
   },
@@ -138,60 +139,61 @@ const adjustIconPadding = ( ICONCONTAINER, DATA ) => {
 const createContextMenu = ( menuData = contextMenuItens ) => {
   CONTEXTMENU.innerHTML = "";
 
-  for ( let i = 0; i < menuData.length; i++ ) {
-    const that = menuData[i];
+  for ( const menuItem of menuData ) {
+    const item = document.createElement( menuItem.link ? "A" : "DIV" );
 
-    const item = document.createElement( that.link ? "A" : "DIV" );
-
-    if ( that.hr ) {
+    if ( menuItem.hr ) {
       item.className = "context-menu-hr";
     } else {
       item.className = "context-menu-primary-item";
     }
 
-    if ( that.icon ) {
+    if ( menuItem.icon ) {
       const iconContainer = document.createElement( "SPAN" );
       iconContainer.className = "context-menu-icon";
-      iconContainer.innerHTML = that.icon;
+      iconContainer.innerHTML = menuItem.icon;
 
-      adjustIconPadding( iconContainer, that );
+      adjustIconPadding( iconContainer, menuItem );
 
       item.appendChild( iconContainer );
     }
 
-    if ( that.title ) {
+    if ( menuItem.title ) {
       const textContainer = document.createElement( "SPAN" );
       textContainer.className = "context-menu-label";
-      textContainer.appendChild( document.createTextNode( that.title ) );
+      textContainer.appendChild( document.createTextNode( menuItem.title ) );
       item.appendChild( textContainer );
     }
 
-    if ( that.link ) {
-      item.setAttribute( "href", that.link );
+    if ( menuItem.link ) {
+      item.setAttribute( "href", menuItem.link );
       item.setAttribute( "target", "_blank" );
       item.setAttribute( "rel", "noopener noreferrer" );
       item.style.cursor = "pointer";
     }
 
-    if ( that.copy ) {
+    if ( menuItem.copy ) {
       item.addEventListener( "click", () => {
-        copyToClipboard( that.copy );
+        copyToClipboard( menuItem.copy );
       } );
     }
 
-    if ( that.app ) {
-      console.log( "is app" );
+    if ( menuItem.app ) {
       item.addEventListener( "click", () => {
-        startApp( that.app );
+        if ( menuItem.app === closeApp ) {
+          closeApp();
+        } else {
+          startApp( menuItem.app );
+        }
       } );
     }
 
-    if ( that.itens ) {
+    if ( menuItem.itens ) {
       const subMenu = document.createElement( "DIV" );
       subMenu.className = "context-menu-sub-menu";
 
-      const itensArray = that.itens.sort( ( a, b ) => {
-        if ( that.sort === "abc" ) {
+      const itensArray = menuItem.itens.sort( ( a, b ) => {
+        if ( menuItem.sort === "abc" ) {
           if( a.label < b.label ) { return -1; }
           if( a.label > b.label ) { return 1; }
           return 0;
@@ -199,17 +201,17 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
         return 0;
       } );
 
-      for ( let x = 0; x < itensArray.length; x++ ) {
+      for ( const subMenuItem of itensArray ) {
         const subItem = document.createElement( "A" );
         subItem.className = "context-menu-secondary-item";
-        subItem.setAttribute( "href", itensArray[x].link );
+        subItem.setAttribute( "href", subMenuItem.link );
 
-        if ( itensArray[x].icon ) {
+        if ( subMenuItem.icon ) {
           const iconContainer = document.createElement( "SPAN" );
           iconContainer.className = "context-menu-icon";
-          iconContainer.innerHTML = itensArray[x].icon;
+          iconContainer.innerHTML = subMenuItem.icon;
 
-          adjustIconPadding( iconContainer, itensArray[x] );
+          adjustIconPadding( iconContainer, subMenuItem );
 
           subItem.appendChild( iconContainer );
 
@@ -217,7 +219,7 @@ const createContextMenu = ( menuData = contextMenuItens ) => {
 
         const subItemTextContainer = document.createElement( "SPAN" );
         subItemTextContainer.className = "context-menu-label";
-        subItemTextContainer.appendChild( document.createTextNode( itensArray[x].label ) );
+        subItemTextContainer.appendChild( document.createTextNode( subMenuItem.label ) );
         subItem.appendChild( subItemTextContainer );
 
         subItem.setAttribute( "target", "_blank" );
@@ -258,6 +260,8 @@ export default function contextMenuController ( themePallete, randomPromo ) {
   // ` );
 
   window.addEventListener( "contextmenu", ( event ) => {
+    // Descomente a linha abaixo para debugar second-apps
+    if ( document.body.classList.contains( "--run-on-bg-finish" ) ) { return; }
     event.preventDefault();
 
     document.body.classList.add( "--context-menu-open" );
@@ -325,7 +329,16 @@ export default function contextMenuController ( themePallete, randomPromo ) {
         }
       ] );
     } else {
-      createContextMenu();
+      if ( document.body.classList.contains( "--run-on-bg-finish" ) ) {
+        createContextMenu( [
+          {
+            "title": "return",
+            "app": closeApp
+          },
+        ] );
+      } else {
+        createContextMenu();
+      }
     }
 
     // Calculate Max Context Menu Size (including sub itens)

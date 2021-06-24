@@ -85,12 +85,12 @@ module.exports = {
         collapseWhitespace: true
       },
     } ),
-    // new HtmlWebpackInlineSourcePlugin( HtmlWebpackPlugin ),
+    new HtmlWebpackInlineSourcePlugin( HtmlWebpackPlugin ),
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin( {
       VERSION: JSON.stringify( require( "./package.json" ).version ),
       UMBLERREF: JSON.stringify( "https://www.umbler.com/br/seja-bem-vindo?a=7kly6v4e" ),
-      FILEWEIGHT: "58.375"
+      FILEWEIGHT: "68.272"
     } ),
     new CopyPlugin( {
       patterns: [

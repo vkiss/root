@@ -9,13 +9,11 @@ a {
 }
 
 #main-app {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: flex-end;
-
+  @include main-app-container();
   @include main-app-element-controller();
+
+  flex-direction: column;
+  justify-content: flex-end;
 
   @include not-mobile {
     justify-content: center;

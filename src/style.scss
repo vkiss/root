@@ -1,8 +1,4 @@
-@import
-  "./scss/settings/mixin",
-  "./scss/settings/normalize",
-  "./scss/settings/variables",
-  "./scss/settings/zindex";
+@import "./scss/toolkit";
 
 $mobile-resolution: 900;
 
@@ -14,7 +10,8 @@ $mobile-resolution: 900;
   "./scss/fake-html",
   "./scss/promo-box",
   "./scss/context-menu",
-  "./scss/mouse-tooltip";
+  "./scss/mouse-tooltip",
+  "./scss/apps_aesthetics";
 
 // trumps
 @import "./scss/helpers";

@@ -55,6 +55,7 @@ const generateRandomIdsArray = () => {
 
   for ( const letter of allLetter ) {
     finalArray.push( letter );
+    finalArray.push( letter + letter );
   }
 
   return finalArray;
@@ -68,6 +69,8 @@ fs.readFile( indexFile, "utf8", function ( err, data ) {
   const aditionalClassesAndIds = [
     "#email-link-desktop",
     "#phone-link-desktop",
+    "#second-app",
+    "#canvas-element",
     ".context-menu-secondary-item",
     ".context-menu-link-sign"
   ];
