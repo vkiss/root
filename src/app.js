@@ -1,16 +1,12 @@
 import "./style.scss";
 
-/**
- * Imports
- */
-
-// Import :: Utils
+// utils
 import { randomIntFromInterval } from "./utils";
 
-// Import :: Packages
+// packages
 import { watchVh } from "vh-watch";
 
-// Import :: Controllers
+// controllers
 import { consoleController } from "./controllers/console";
 import { createPromoLoop, createPromoBox } from "./controllers/promo-box";
 import { randomizeColorPalette, injectTrailingSpaces } from "./controllers/dom-theme";
@@ -18,7 +14,7 @@ import { createFooterNotes } from "./controllers/footer-notes";
 import { mouseTooltipController } from "./controllers/mouse-tooltip";
 import contextMenu from "./controllers/context-menu";
 
-// Import :: Data
+// data
 const themes = require( "./data/themes.json" );
 
 /**
