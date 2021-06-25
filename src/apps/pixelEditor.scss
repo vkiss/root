@@ -10,6 +10,7 @@
   &__toolbar {
     display: flex;
     width: 120px;
+    flex-direction: column;
     flex-wrap: wrap;
     border-right: 1px solid #FFF;
     margin-right: 30px;
@@ -69,5 +70,10 @@
 
       margin-top: 15px;
     }
+  }
+
+  #textarea-export-value {
+    margin-top: 15px;
+    resize: none;
   }
 }

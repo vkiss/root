@@ -21,7 +21,9 @@ const encodeMap = ( svgArray ) => {
     .replace( /{"x":/g, "" )
     .replace( /,"y":/g, "," )
     .replace( /},/g, "|" )
-    .replace( /}/g, "" );
+    .replace( /}/g, "" )
+    .replace( /\[/g, "" )
+    .replace( /\]/g, "" );
 };
 
 // handlers
@@ -214,6 +216,9 @@ const TOOLBAR_TOOLS = [
     }
   },
   {
+    "divider": true
+  },
+  {
     "name": "size config",
     "action": ( event ) => {
       const toolButton = event.target;
@@ -258,6 +263,35 @@ const TOOLBAR_TOOLS = [
       toolButton.appendChild( configContainer );
     }
   },
+  {
+    "name": "open work",
+    "action": ( event ) => {
+      const toolButton = event.target;
+
+      if ( toolButton.children.length > 0 ) { // already open
+        toolButton.innerHTML = "";
+        toolButton.appendChild( document.createTextNode( "open work" ) );
+        return;
+      }
+
+      const configContainer = document.createElement( "DIV" );
+
+      const loadTextArea = document.createElement( "TEXTAREA" );
+      loadTextArea.addEventListener( "keyup", ( loadEvent ) => {
+        if( loadEvent.code === "Enter" ) {
+          event.preventDefault();
+          console.log( "load file function" );
+          // TODO: Implementar função de load de svg
+          toolButton.innerHTML = "";
+          toolButton.appendChild( document.createTextNode( "open work" ) );
+        };
+      } );
+
+      configContainer.appendChild( loadTextArea );
+
+      toolButton.appendChild( configContainer );
+    }
+  },
 ];
 
 const toolbarClick = ( event ) => {
@@ -278,12 +312,16 @@ const toolbar = () => {
   container.className = "pixel-editor__toolbar";
 
   for ( const tool of TOOLBAR_TOOLS ) {
-    const toolButton = document.createElement( "DIV" );
-    toolButton.setAttribute( "role", "button" );
-    toolButton.toolName = tool.tool;
-    toolButton.action = tool.action;
-    toolButton.appendChild( document.createTextNode( tool.name ) );
-    container.appendChild( toolButton );
+    if ( tool.divider ) {
+      container.appendChild( document.createElement( "HR" ) );
+    } else {
+      const toolButton = document.createElement( "DIV" );
+      toolButton.setAttribute( "role", "button" );
+      toolButton.toolName = tool.tool;
+      toolButton.action = tool.action;
+      toolButton.appendChild( document.createTextNode( tool.name ) );
+      container.appendChild( toolButton );
+    }
   }
 
   container.addEventListener( "click", toolbarClick );
