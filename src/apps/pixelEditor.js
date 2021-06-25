@@ -13,6 +13,17 @@ let CANVAS_CONFIG = {
   Y: 21, // tiles
 };
 
+const CANVAS_BOARD = [];
+
+// encoders & decoders
+const encodeMap = ( svgArray ) => {
+  return JSON.stringify( svgArray )
+    .replace( /{"x":/g, "" )
+    .replace( /,"y":/g, "," )
+    .replace( /},/g, "|" )
+    .replace( /}/g, "" );
+};
+
 // handlers
 
 const getCanvasSize = ( coordinate ) => {
@@ -54,21 +65,54 @@ const handlerColorChangeAction = ( tile, color ) => {
 
 const handleColorChange = ( tile ) => {
   const isTainted = tile.dataset.color == "#000";
+  const tileCoordinates = getTilePosition( tile );
 
   drawOnCanvas( getTilePosition( tile ), isTainted );
 
   if ( isTainted ) {
+    // remove from virtual board
+    let indexToFind = 0;
+    for ( let i = 0; i < CANVAS_BOARD.length; i++ ) {
+      if ( CANVAS_BOARD[i].x === tileCoordinates.x && CANVAS_BOARD[i].y === tileCoordinates.y ) {
+        indexToFind = i;
+      }
+    }
+    CANVAS_BOARD.splice( indexToFind, 1 );
+
     handlerColorChangeAction( tile, "#FFF" );
   } else {
+    // push to virtual board
+    CANVAS_BOARD.push( tileCoordinates );
+
     handlerColorChangeAction( tile, "#000" );
   }
+
+  const svgContainer = document.querySelector( ".svg-element-container" );
+  const svgElement = svgContainer.querySelector( "svg" );
+
+  // update svg preview element
+  svgContainer.removeChild( svgElement );
+  svgContainer.appendChild( generateSvg() );
+
+  // update text area export value
+  document.getElementById( "textarea-export-value" ).value = encodeMap( CANVAS_BOARD );
 };
 
-const generateSvg = ( data ) => {
+const generateSvg = ( data = { width: 21, height: 21 }, pixelSheet = CANVAS_BOARD ) => {
   const ns = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS( ns, "svg" );
   svg.setAttributeNS( null, "width", data.width );
   svg.setAttributeNS( null, "height", data.height );
+
+  for( const pixel of pixelSheet ) {
+    var rect = document.createElementNS( ns, "rect" );
+    rect.setAttributeNS( null, "width", 1 );
+    rect.setAttributeNS( null, "height", 1 );
+    rect.setAttributeNS( null, "x", pixel.x );
+    rect.setAttributeNS( null, "y", pixel.y );
+    rect.setAttributeNS( null, "fill", "#000" );
+    svg.appendChild( rect );
+  }
 
   return svg;
 };
@@ -122,7 +166,7 @@ const canvasEditor = () => {
   return container;
 };
 
-const previewImg = () => {
+const previewPannel = () => {
   const container = document.createElement( "DIV" );
   container.className = CLASS_PREVIEW;
 
@@ -147,6 +191,16 @@ const previewImg = () => {
   } ) );
 
   container.appendChild( svgContainer );
+
+  const decodedTextArea = document.createElement( "TEXTAREA" );
+  decodedTextArea.id= "textarea-export-value";
+  decodedTextArea.setAttribute( "readonly", "readonly" );
+  decodedTextArea.addEventListener( "click", () => {
+    decodedTextArea.focus();
+    decodedTextArea.select();
+  } );
+
+  container.appendChild( decodedTextArea );
 
   return container;
 };
@@ -248,7 +302,7 @@ export default function pixelEditor () {
 
   thisApp.appendChild( toolbar() );
   thisApp.appendChild( canvasEditor() );
-  thisApp.appendChild( previewImg() );
+  thisApp.appendChild( previewPannel() );
 
   return {
     monitorName: "Pixel Editor",

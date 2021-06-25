@@ -71,6 +71,7 @@ fs.readFile( indexFile, "utf8", function ( err, data ) {
     "#phone-link-desktop",
     "#second-app",
     "#canvas-element",
+    "#textarea-export-value",
     ".context-menu-secondary-item",
     ".context-menu-link-sign"
   ];

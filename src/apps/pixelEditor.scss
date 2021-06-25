@@ -3,6 +3,10 @@
 .pixel-editor {
   @include second-app-container-shared-config();
 
+  ::selection {
+    background-color: #0FF;
+  }
+
   &__toolbar {
     display: flex;
     width: 120px;
@@ -34,12 +38,15 @@
 
   &__preview {
     position: fixed;
-    top: 15px;
-    right: 15px;
+    right: 25px;
+    bottom: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 10px 20px 20px;
+    background: rgba(240, 46, 170, .5);
+    box-shadow: rgba(240, 46, 170, .4) 5px 5px, rgba(240, 46, 170, .3) 10px 10px, rgba(240, 46, 170, .2) 15px 15px, rgba(240, 46, 170, .1) 20px 20px, rgba(240, 46, 170, .05) 25px 25px;
 
     &:before {
       margin-bottom: 5px;
