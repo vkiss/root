@@ -7,7 +7,7 @@ import { copyToClipboard, scanNodeDimension, isMobileDevice } from "../utils";
 // apps
 import startApp from "../apps/trigger/start";
 import closeApp from "../apps/trigger/close";
-import pixelEditor from "../apps/pixelEditor";
+import pixelEditor from "../apps/pixelEditor/index";
 
 // assets
 import telegramSuperior from "../assets/logos/telegram.svg";

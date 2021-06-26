@@ -1,4 +1,4 @@
-import "./pixelEditor.scss";
+import "./style.scss";
 
 // variables
 
